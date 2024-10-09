@@ -14,6 +14,6 @@ main =
         (Quantity.toLightYears, "light years"),
         (Quantity.toAngstroms, "angstroms"),
     ]
-        |> Task.forEach \(toUnit, unitName) ->
-            Stdout.line! "I would walk $(distance |> toUnit |> Num.toStr) $(unitName)."
-            Stdout.line! "And I would walk $(distance |> toUnit |> Num.toStr) more."
+    |> Task.forEach \(toUnit, unitName) ->
+        Stdout.line! "I would walk $(distance |> toUnit |> Num.toStr) $(unitName)."
+        Stdout.line! "And I would walk $(distance |> toUnit |> Num.toStr) more."

@@ -38,13 +38,12 @@
             packages = [
               inputs'.roc.packages.cli
               pkgs.just
-              pkgs.pre-commit
+              # Pre-commit
+              pkgs.check-jsonschema
               pkgs.nixfmt-rfc-style
-              # Codegen tooling
-              pkgs.mypy
-              pkgs.python312
-              pkgs.python312Packages.networkx
-              pkgs.ruff
+              pkgs.nodePackages.prettier
+              pkgs.pre-commit
+              pkgs.python312Packages.pre-commit-hooks
             ];
             shellHook = "pre-commit install --overwrite";
           };
