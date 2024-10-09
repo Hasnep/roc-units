@@ -1,8 +1,8 @@
 default: format check test docs examples
 
 format:
-    -roc format
-    -find examples -name '*.roc' -exec roc format {} \;
+    roc format src/
+    roc format examples/
 
 check:
     roc check src/main.roc
