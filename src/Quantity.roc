@@ -26,8 +26,8 @@ module [
     toJoules,
     calories,
     toCalories,
-    kiloCalories,
-    toKiloCalories,
+    kilocalories,
+    toKilocalories,
     kilowattHours,
     toKilowattHours,
     # Force
@@ -253,13 +253,13 @@ calories = \x -> joules (Convert.caloriesToJoules x)
 toCalories : Energy F64 -> F64
 toCalories = \@Quantity x -> Convert.joulesToCalories x
 
-## Parse a number as a energy in kilo calories.
-kiloCalories : F64 -> Energy F64
-kiloCalories = \x -> joules (Convert.kiloCaloriesToJoules x)
+## Parse a number as a energy in kilocalories.
+kilocalories : F64 -> Energy F64
+kilocalories = \x -> joules (Convert.kilocaloriesToJoules x)
 
-## Convert a energy to a number of kilo calories.
-toKiloCalories : Energy F64 -> F64
-toKiloCalories = \@Quantity x -> Convert.joulesToKiloCalories x
+## Convert a energy to a number of kilocalories.
+toKilocalories : Energy F64 -> F64
+toKilocalories = \@Quantity x -> Convert.joulesToKilocalories x
 
 ## Parse a number as a energy in kilowatt hours (kWh).
 kilowattHours : F64 -> Energy F64

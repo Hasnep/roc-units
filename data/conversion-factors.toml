@@ -29,7 +29,7 @@ sources = [
 to_unit = "joules"
 
 [[energy]]
-from_unit = "kilo calories"
+from_unit = "kilocalories"
 scale_factor = "1000"
 sources = ["Logic"]
 to_unit = "calories"
