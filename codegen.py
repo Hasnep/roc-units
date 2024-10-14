@@ -33,15 +33,19 @@ def enparen(s: str) -> str:
     return f"({s})"
 
 
+def flatten(nested_iterable: Iterable[Iterable[T]]) -> list[T]:
+    return [item for sublist in nested_iterable for item in sublist]
+
+
+def split_words(s: str) -> list[str]:
+    return flatten(w.split("-") for w in s.split(" "))
+
+
 def camel_case(s: str, lower_or_upper: Literal["lower", "upper"]) -> str:
     return "".join(
         word if (i == 0 and lower_or_upper == "lower") else word.capitalize()
-        for i, word in enumerate(s.split(" "))
+        for i, word in enumerate(split_words(s))
     )
-
-
-def flatten(nested_iterable: Iterable[Iterable[T]]) -> list[T]:
-    return [item for sublist in nested_iterable for item in sublist]
 
 
 def get_path_between_units(
