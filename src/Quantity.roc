@@ -175,11 +175,11 @@ isApproxEq : Quantity F64 units, Quantity F64 units, {} -> Bool
 isApproxEq = \@Quantity x, @Quantity y, _ -> Num.isApproxEq x y {}
 # Acceleration
 
-## Parse a number as a acceleration in meters per second per second (m/s/s).
+## Parse a number as a acceleration in meters per second per second (m·s⁻²).
 metersPerSecondPerSecond : F64 -> Acceleration F64
 metersPerSecondPerSecond = \x -> @Quantity x
 
-## Convert a acceleration to a number of meters per second per second (m/s/s).
+## Convert a acceleration to a number of meters per second per second (m·s⁻²).
 toMetersPerSecondPerSecond : Acceleration F64 -> F64
 toMetersPerSecondPerSecond = \@Quantity x -> x
 
@@ -447,19 +447,19 @@ toBars = \@Quantity x -> Convert.pascalsToBars x
 
 # Speed
 
-## Parse a number as a speed in meters per second (m/s).
+## Parse a number as a speed in meters per second (m·s⁻¹).
 metersPerSecond : F64 -> Speed F64
 metersPerSecond = \x -> @Quantity x
 
-## Convert a speed to a number of meters per second (m/s).
+## Convert a speed to a number of meters per second (m·s⁻¹).
 toMetersPerSecond : Speed F64 -> F64
 toMetersPerSecond = \@Quantity x -> x
 
-## Parse a number as a speed in feet per second (ft/s).
+## Parse a number as a speed in feet per second (ft·s⁻¹).
 feetPerSecond : F64 -> Speed F64
 feetPerSecond = \x -> metersPerSecond (Convert.feetPerSecondToMetersPerSecond x)
 
-## Convert a speed to a number of feet per second (ft/s).
+## Convert a speed to a number of feet per second (ft·s⁻¹).
 toFeetPerSecond : Speed F64 -> F64
 toFeetPerSecond = \@Quantity x -> Convert.metersPerSecondToFeetPerSecond x
 
@@ -555,19 +555,19 @@ liters = \x -> @Quantity x
 toLiters : Volume F64 -> F64
 toLiters = \@Quantity x -> x
 
-## Parse a number as a volume in cubic centimeters.
+## Parse a number as a volume in cubic centimeters (cm³).
 cubicCentimeters : F64 -> Volume F64
 cubicCentimeters = \x -> liters (Convert.cubicCentimetersToLiters x)
 
-## Convert a volume to a number of cubic centimeters.
+## Convert a volume to a number of cubic centimeters (cm³).
 toCubicCentimeters : Volume F64 -> F64
 toCubicCentimeters = \@Quantity x -> Convert.litersToCubicCentimeters x
 
-## Parse a number as a volume in cubic inches.
+## Parse a number as a volume in cubic inches (in³).
 cubicInches : F64 -> Volume F64
 cubicInches = \x -> liters (Convert.cubicInchesToLiters x)
 
-## Convert a volume to a number of cubic inches.
+## Convert a volume to a number of cubic inches (in³).
 toCubicInches : Volume F64 -> F64
 toCubicInches = \@Quantity x -> Convert.litersToCubicInches x
 
