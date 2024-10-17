@@ -54,8 +54,11 @@ module [
     litersToCubicInches,
     litersToCubicMeters,
     litersToGallons,
+    litersToMilliliters,
     litersToPints,
     litersToQuarts,
+    litersToTablespoons,
+    litersToTeaspoons,
     machToMetersPerSecond,
     metersPerSecondPerSecondToStandardGravity,
     metersPerSecondToFeetPerSecond,
@@ -77,6 +80,9 @@ module [
     milesPerHourToMetersPerSecond,
     milesToFeet,
     milesToMeters,
+    millilitersToLiters,
+    millilitersToTablespoons,
+    millilitersToTeaspoons,
     minutesToHours,
     minutesToSeconds,
     nauticalMilesToMeters,
@@ -102,6 +108,10 @@ module [
     squareFeetToSquareMeters,
     squareMetersToSquareFeet,
     standardGravityToMetersPerSecondPerSecond,
+    tablespoonsToLiters,
+    tablespoonsToMilliliters,
+    teaspoonsToLiters,
+    teaspoonsToMilliliters,
     tonnesToKilograms,
     tonsToKilograms,
     tonsToPounds,
@@ -355,10 +365,16 @@ expect
     out |> Num.isApproxEq 1.000f64 {}
 litersToGallons : F64 -> F64
 litersToGallons = \x -> x |> litersToCubicMeters |> cubicMetersToCubicInches |> cubicInchesToGallons
+litersToMilliliters : F64 -> F64
+litersToMilliliters = \x -> x * 1000
 litersToPints : F64 -> F64
 litersToPints = \x -> x |> litersToCubicMeters |> cubicMetersToCubicInches |> cubicInchesToGallons |> gallonsToQuarts |> quartsToPints
 litersToQuarts : F64 -> F64
 litersToQuarts = \x -> x |> litersToCubicMeters |> cubicMetersToCubicInches |> cubicInchesToGallons |> gallonsToQuarts
+litersToTablespoons : F64 -> F64
+litersToTablespoons = \x -> x |> litersToMilliliters |> millilitersToTablespoons
+litersToTeaspoons : F64 -> F64
+litersToTeaspoons = \x -> x |> litersToMilliliters |> millilitersToTeaspoons
 machToMetersPerSecond : F64 -> F64
 machToMetersPerSecond = \x -> x * 331.46
 expect
@@ -458,6 +474,12 @@ milesToMeters = \x -> x |> milesToFeet |> feetToYards |> yardsToMeters
 expect
     out = milesToMeters 1.000f64
     out |> Num.isApproxEq 1609.340f64 {}
+millilitersToLiters : F64 -> F64
+millilitersToLiters = \x -> (Num.toF64 x) / 1000
+millilitersToTablespoons : F64 -> F64
+millilitersToTablespoons = \x -> (Num.toF64 x) / 14.78676
+millilitersToTeaspoons : F64 -> F64
+millilitersToTeaspoons = \x -> (Num.toF64 x) / 4.928922
 minutesToHours : F64 -> F64
 minutesToHours = \x -> (Num.toF64 x) / 60
 expect
@@ -562,6 +584,14 @@ expect
     out |> Num.isApproxEq 1076.391f64 {}
 standardGravityToMetersPerSecondPerSecond : F64 -> F64
 standardGravityToMetersPerSecondPerSecond = \x -> x * 9.80665
+tablespoonsToLiters : F64 -> F64
+tablespoonsToLiters = \x -> x |> tablespoonsToMilliliters |> millilitersToLiters
+tablespoonsToMilliliters : F64 -> F64
+tablespoonsToMilliliters = \x -> x * 14.78676
+teaspoonsToLiters : F64 -> F64
+teaspoonsToLiters = \x -> x |> teaspoonsToMilliliters |> millilitersToLiters
+teaspoonsToMilliliters : F64 -> F64
+teaspoonsToMilliliters = \x -> x * 4.928922
 tonnesToKilograms : F64 -> F64
 tonnesToKilograms = \x -> x * 1000
 expect

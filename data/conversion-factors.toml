@@ -234,6 +234,24 @@ scale_factor = "7"
 to_unit = "days"
 
 [[volume]]
+from_unit = "liters"
+scale_factor = "1000"
+sources = ["Logic"]
+to_unit = "milliliters"
+
+[[volume]]
+from_unit = "tablespoons"
+scale_factor = "14.78676"
+sources = ["Thompson, E. A., & Taylor, B. N. (2008). Guide for the use of the International System of Units (SI). https://doi.org/10.6028/nist.sp.811e2008. Appendix B8, page 55."]
+to_unit = "milliliters"
+
+[[volume]]
+from_unit = "teaspoons"
+scale_factor = "4.928922"
+sources = ["Thompson, E. A., & Taylor, B. N. (2008). Guide for the use of the International System of Units (SI). https://doi.org/10.6028/nist.sp.811e2008. Appendix B8, page 55."]
+to_unit = "milliliters"
+
+[[volume]]
 from_unit = "cubic inches"
 scale_factor = "(1 |> inchesToMeters |> Num.pow 3)"
 to_unit = "cubic meters"

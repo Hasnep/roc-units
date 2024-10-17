@@ -117,6 +117,10 @@ module [
     toPints,
     quarts,
     toQuarts,
+    tablespoons,
+    toTablespoons,
+    teaspoons,
+    toTeaspoons,
 ]
 
 import Convert
@@ -602,3 +606,19 @@ quarts = \x -> liters (Convert.quartsToLiters x)
 ## Convert a volume to a number of quarts.
 toQuarts : Volume F64 -> F64
 toQuarts = \@Quantity x -> Convert.litersToQuarts x
+
+## Parse a number as a volume in tablespoons (tbsp).
+tablespoons : F64 -> Volume F64
+tablespoons = \x -> liters (Convert.tablespoonsToLiters x)
+
+## Convert a volume to a number of tablespoons (tbsp).
+toTablespoons : Volume F64 -> F64
+toTablespoons = \@Quantity x -> Convert.litersToTablespoons x
+
+## Parse a number as a volume in teaspoons (tsp).
+teaspoons : F64 -> Volume F64
+teaspoons = \x -> liters (Convert.teaspoonsToLiters x)
+
+## Convert a volume to a number of teaspoons (tsp).
+toTeaspoons : Volume F64 -> F64
+toTeaspoons = \@Quantity x -> Convert.litersToTeaspoons x
