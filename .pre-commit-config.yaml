@@ -138,5 +138,5 @@ repos:
       - name: Run codegen
         id: codegen
         language: system
-        entry: just codegen
+        entry: python3 codegen.py
         pass_filenames: false
