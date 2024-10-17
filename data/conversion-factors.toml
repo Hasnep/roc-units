@@ -1,0 +1,274 @@
+[[acceleration]]
+from_unit = "standard gravity"
+scale_factor = "9.80665"
+sources = []
+to_unit = "meters per second per second"
+
+[[area]]
+from_unit = "square feet"
+scale_factor = "(1 |> feetToMeters |> Num.pow 2)"
+sources = ["Logic"]
+to_unit = "square meters"
+
+[[data]]
+from_unit = "bytes"
+scale_factor = "8"
+to_unit = "bits"
+
+[[data]]
+from_unit = "nibbles"
+scale_factor = "4"
+to_unit = "bits"
+
+[[energy]]
+from_unit = "calories"
+scale_factor = "4.1868"
+to_unit = "joules"
+
+[[energy]]
+from_unit = "kilo calories"
+scale_factor = "1000"
+sources = ["Logic"]
+to_unit = "calories"
+
+[[energy]]
+from_unit = "watt hours"
+scale_factor = "hoursToSeconds 1"
+sources = ["Logic"]
+to_unit = "joules"
+
+[[energy]]
+from_unit = "kilowatt hours"
+scale_factor = "1000"
+sources = ["Logic"]
+to_unit = "watt hours"
+
+[[force]]
+from_unit = "newtons"
+scale_factor = "(poundsToKilograms 1) / (standardGravityToMetersPerSecondPerSecond 1)"
+to_unit = "pound force"
+
+[[length]]
+from_unit = "kilometers"
+scale_factor = "1000"
+to_unit = "meters"
+
+[[length]]
+from_unit = "feet"
+scale_factor = "12"
+sources = ["Federal Register, Vol. 33, No. 146, p. 10755, July 27, 1968"]
+to_unit = "inches"
+
+[[length]]
+from_unit = "angstroms"
+scale_factor = "1e-10"
+sources = [
+  "Thompson, E. A., & Taylor, B. N. (2008). Guide for the use of the International System of Units (SI). https://doi.org/10.6028/nist.sp.811e2008. Table 9, page 10"
+]
+to_unit = "meters"
+
+[[length]]
+from_unit = "astronomical units"
+scale_factor = "149597870700"
+sources = [
+  "Newell, D. B., & Tiesinga, E. (2019). The international system of units (SI): https://doi.org/10.6028/nist.sp.330-2019. Table 8, page 25"
+]
+to_unit = "meters"
+
+[[length]]
+from_unit = "meters"
+scale_factor = "100"
+sources = ["Logic"]
+to_unit = "centimeters"
+
+[[length]]
+from_unit = "light years"
+scale_factor = "((lightSpeedToMetersPerSecond 1) * (daysToSeconds (365 + (1 / 4))))"
+sources = ["Logic"]
+to_unit = "meters"
+
+[[length]]
+from_unit = "miles"
+scale_factor = "5280"
+sources = ["Federal Register, Vol. 33, No. 146, p. 10755, July 27, 1968"]
+to_unit = "feet"
+
+[[length]]
+from_unit = "yards"
+scale_factor = "0.9144"
+sources = ["Federal Register, Vol. 24, No. 128, p. 5348, July 1, 1959"]
+to_unit = "meters"
+
+[[length]]
+from_unit = "yards"
+scale_factor = "3"
+sources = ["Federal Register, Vol. 33, No. 146, p. 10755, July 27, 1968"]
+to_unit = "feet"
+
+[[length]]
+from_unit = "nautical miles"
+scale_factor = "1852"
+sources = [
+  "Thompson, E. A., & Taylor, B. N. (2008). Guide for the use of the International System of Units (SI). https://doi.org/10.6028/nist.sp.811e2008. Table 9, page 10"
+]
+to_unit = "meters"
+
+[[mass]]
+from_unit = "pounds"
+scale_factor = "0.45359237"
+sources = ["Federal Register, Vol. 24, No. 128, p. 5348, July 1, 1959"]
+to_unit = "kilograms"
+
+[[mass]]
+from_unit = "kilograms"
+scale_factor = "1000"
+to_unit = "grams"
+
+[[mass]]
+from_unit = "tonnes"
+scale_factor = "1000"
+sources = [
+  "Newell, D. B., & Tiesinga, E. (2019). The international system of units (SI): https://doi.org/10.6028/nist.sp.330-2019. Table 8, page 25"
+]
+to_unit = "kilograms"
+
+[[mass]]
+from_unit = "pounds"
+scale_factor = "16"
+sources = ["Federal Register, Vol. 33, No. 146, p. 10755, July 27, 1968"]
+to_unit = "ounces"
+
+[[mass]]
+from_unit = "tons"
+scale_factor = "2000"
+sources = ["Federal Register, Vol. 33, No. 146, p. 10755, July 27, 1968"]
+to_unit = "pounds"
+
+[[pressure]]
+from_unit = "bars"
+scale_factor = "1e5"
+sources = [
+  "Thompson, E. A., & Taylor, B. N. (2008). Guide for the use of the International System of Units (SI). https://doi.org/10.6028/nist.sp.811e2008. Table 9, page 10"
+]
+to_unit = "pascals"
+
+[[pressure]]
+from_unit = "atmospheres"
+scale_factor = "101325"
+sources = [
+  "Thompson, E. A., & Taylor, B. N. (2008). Guide for the use of the International System of Units (SI). https://doi.org/10.6028/nist.sp.811e2008. Table 11, page 11"
+]
+to_unit = "pascals"
+
+[[speed]]
+from_unit = "knots"
+scale_factor = "((nauticalMilesToMeters 1) / (1 |> hoursToMinutes |> minutesToSeconds))"
+sources = [
+  "Thompson, E. A., & Taylor, B. N. (2008). Guide for the use of the International System of Units (SI). https://doi.org/10.6028/nist.sp.811e2008. Table 9, page 10"
+]
+to_unit = "meters per second"
+
+[[speed]]
+from_unit = "meters per second"
+scale_factor = "(metersToFeet 1)"
+sources = ["Logic"]
+to_unit = "feet per second"
+
+[[speed]]
+from_unit = "mach"
+scale_factor = "331.46"
+sources = []
+to_unit = "meters per second"
+
+[[speed]]
+from_unit = "light speed"
+scale_factor = "299792458"
+sources = [
+  "Mohr, P. J., Newell, D. B., & Taylor, B. N. (2015). CODATA recommended values of the fundamental physical constants: 2014. https://doi.org/10.6028/nist.sp.961r2015",
+  "Newell, D. B., & Tiesinga, E. (2019). The international system of units (SI): https://doi.org/10.6028/nist.sp.330-2019. Table 1, page 4"
+]
+to_unit = "meters per second"
+
+[[speed]]
+from_unit = "miles per hour"
+scale_factor = "(milesToMeters 1 / (1 |> hoursToMinutes |> minutesToSeconds))"
+sources = ["Logic"]
+to_unit = "meters per second"
+
+[[speed]]
+from_unit = "kilometers per hour"
+scale_factor = "(kilometersToMeters 1 / (1 |> hoursToMinutes |> minutesToSeconds))"
+sources = ["Logic"]
+to_unit = "meters per second"
+
+[[time]]
+from_unit = "minutes"
+scale_factor = "60"
+sources = [
+  "Newell, D. B., & Tiesinga, E. (2019). The international system of units (SI): https://doi.org/10.6028/nist.sp.330-2019. Table 8, page 25"
+]
+to_unit = "seconds"
+
+[[time]]
+from_unit = "hours"
+scale_factor = "60"
+sources = [
+  "Newell, D. B., & Tiesinga, E. (2019). The international system of units (SI): https://doi.org/10.6028/nist.sp.330-2019. Table 8, page 25"
+]
+to_unit = "minutes"
+
+[[time]]
+from_unit = "days"
+scale_factor = "24"
+sources = [
+  "Newell, D. B., & Tiesinga, E. (2019). The international system of units (SI): https://doi.org/10.6028/nist.sp.330-2019. Table 8, page 25"
+]
+to_unit = "hours"
+
+[[time]]
+from_unit = "weeks"
+scale_factor = "7"
+to_unit = "days"
+
+[[volume]]
+from_unit = "cubic inches"
+scale_factor = "(1 |> inchesToMeters |> Num.pow 3)"
+to_unit = "cubic meters"
+
+[[volume]]
+from_unit = "liters"
+scale_factor = "1000"
+sources = [
+  "Newell, D. B., & Tiesinga, E. (2019). The international system of units (SI): https://doi.org/10.6028/nist.sp.330-2019. Table 8, page 25"
+]
+to_unit = "cubic centimeters"
+
+[[volume]]
+from_unit = "cubic meters"
+scale_factor = "1000"
+sources = []
+to_unit = "liters"
+
+[[volume]]
+from_unit = "gallons"
+scale_factor = "231"
+sources = ["Federal Register, Vol. 33, No. 146, p. 10755, July 27, 1968"]
+to_unit = "cubic inches"
+
+[[volume]]
+from_unit = "gallons"
+scale_factor = "4"
+sources = ["Federal Register, Vol. 33, No. 146, p. 10755, July 27, 1968"]
+to_unit = "quarts"
+
+[[volume]]
+from_unit = "quarts"
+scale_factor = "2"
+sources = ["Federal Register, Vol. 33, No. 146, p. 10755, July 27, 1968"]
+to_unit = "pints"
+
+[[volume]]
+from_unit = "gallons"
+scale_factor = "3.7854"
+sources = ["Federal Register, Vol. 33, No. 146, p. 10755, July 27, 1968"]
+to_unit = "liters"

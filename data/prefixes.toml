@@ -1,0 +1,139 @@
+[[atto]]
+sources = ["Newell, D. B., & Tiesinga, E. (2019). The international system of units (SI): https://doi.org/10.6028/nist.sp.330-2019. Page 59"]
+symbol = "a"
+value = "1e-18"
+
+[[centi]]
+sources = ["Newell, D. B., & Tiesinga, E. (2019). The international system of units (SI): https://doi.org/10.6028/nist.sp.330-2019. Page 55"]
+symbol = "c"
+value = "1 / 100"
+
+[[deci]]
+sources = ["Newell, D. B., & Tiesinga, E. (2019). The international system of units (SI): https://doi.org/10.6028/nist.sp.330-2019. Page 55"]
+symbol = "d"
+value = "1 / 10"
+
+[[deka]]
+sources = ["Newell, D. B., & Tiesinga, E. (2019). The international system of units (SI): https://doi.org/10.6028/nist.sp.330-2019. Page 55"]
+symbol = "da"
+value = "10"
+
+[[exa]]
+sources = ["Newell, D. B., & Tiesinga, E. (2019). The international system of units (SI): https://doi.org/10.6028/nist.sp.330-2019. Page 67"]
+symbol = "E"
+value = "1e18"
+
+[[exbi]]
+symbol = "Ei"
+value = "Num.pow 2 60"
+
+[[femto]]
+sources = ["Newell, D. B., & Tiesinga, E. (2019). The international system of units (SI): https://doi.org/10.6028/nist.sp.330-2019. Page 59"]
+symbol = "f"
+value = "1e-15"
+
+[[gibi]]
+symbol = "Gi"
+value = "Num.pow 2 30"
+
+[[giga]]
+sources = ["Newell, D. B., & Tiesinga, E. (2019). The international system of units (SI): https://doi.org/10.6028/nist.sp.330-2019. Page 55"]
+symbol = "G"
+value = "1e9"
+
+[[hecto]]
+sources = ["Newell, D. B., & Tiesinga, E. (2019). The international system of units (SI): https://doi.org/10.6028/nist.sp.330-2019. Page 55"]
+symbol = "h"
+value = "100"
+
+[[kibi]]
+symbol = "Ki"
+value = "Num.pow 2 10"
+
+[[kilo]]
+sources = ["Newell, D. B., & Tiesinga, E. (2019). The international system of units (SI): https://doi.org/10.6028/nist.sp.330-2019. Page 55"]
+symbol = "k"
+value = "1000"
+
+[[mebi]]
+symbol = "Mi"
+value = "Num.pow 2 20"
+
+[[mega]]
+sources = ["Newell, D. B., & Tiesinga, E. (2019). The international system of units (SI): https://doi.org/10.6028/nist.sp.330-2019. Page 55"]
+symbol = "M"
+value = "1e6"
+
+[[micro]]
+sources = ["Newell, D. B., & Tiesinga, E. (2019). The international system of units (SI): https://doi.org/10.6028/nist.sp.330-2019. Page 55"]
+symbol = "μ"
+value = "1e-6"
+
+[[milli]]
+sources = ["Newell, D. B., & Tiesinga, E. (2019). The international system of units (SI): https://doi.org/10.6028/nist.sp.330-2019. Page 55"]
+symbol = "m"
+value = "1 / 1000"
+
+[[nano]]
+sources = ["Newell, D. B., & Tiesinga, E. (2019). The international system of units (SI): https://doi.org/10.6028/nist.sp.330-2019. Page 55"]
+symbol = "n"
+value = "1e-9"
+
+[[pebi]]
+symbol = "Pi"
+value = "Num.pow 2 50"
+
+[[peta]]
+sources = ["Newell, D. B., & Tiesinga, E. (2019). The international system of units (SI): https://doi.org/10.6028/nist.sp.330-2019. Page 67"]
+symbol = "P"
+value = "1e15"
+
+[[pico]]
+sources = ["Newell, D. B., & Tiesinga, E. (2019). The international system of units (SI): https://doi.org/10.6028/nist.sp.330-2019. Page 55"]
+symbol = "p"
+value = "1e-12"
+
+[[quecto]]
+symbol = "q"
+value = "1e-30"
+
+[[quetta]]
+symbol = "Q"
+value = "1e30"
+
+[[ronna]]
+symbol = "R"
+value = "1e27"
+
+[[ronto]]
+symbol = "r"
+value = "1e-27"
+
+[[tebi]]
+symbol = "Ti"
+value = "Num.pow 2 40"
+
+[[tera]]
+sources = ["Newell, D. B., & Tiesinga, E. (2019). The international system of units (SI): https://doi.org/10.6028/nist.sp.330-2019. Page 55"]
+symbol = "T"
+value = "1e12"
+
+[[yocto]]
+sources = ["Newell, D. B., & Tiesinga, E. (2019). The international system of units (SI): https://doi.org/10.6028/nist.sp.330-2019. Page 76"]
+symbol = "y"
+value = "1e-24"
+
+[[yotta]]
+sources = ["Newell, D. B., & Tiesinga, E. (2019). The international system of units (SI): https://doi.org/10.6028/nist.sp.330-2019. Page 76"]
+symbol = "Y"
+value = "1e24"
+
+[[zepto]]
+sources = ["Newell, D. B., & Tiesinga, E. (2019). The international system of units (SI): https://doi.org/10.6028/nist.sp.330-2019. Page 76"]
+symbol = "z"
+value = "1e-21"
+
+[[zetta]]
+sources = ["Newell, D. B., & Tiesinga, E. (2019). The international system of units (SI): https://doi.org/10.6028/nist.sp.330-2019. Page 76"]
+symbol = "Z"
+value = "1e21"

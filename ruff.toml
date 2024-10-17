@@ -1,0 +1,44 @@
+target-version = "py312"
+
+[lint]
+ignore = [
+  "ANN101",
+  "C901",
+  "COM812",
+  "COM819",
+  "D1",
+  "D203",
+  "D212",
+  "E501",
+  "EM",
+  "ERA001",
+  "FA100",
+  "FA102",
+  "FBT003",
+  "FIX",
+  "G004",
+  "ISC003",
+  "PLR0913",
+  "PYI041",
+  "RET505",
+  "S101",
+  "S106",
+  "SIM118",
+  "T20",
+  "TCH002",
+  "TD",
+  "TRY003",
+  "UP006",
+  "UP015"
+]
+select = ["ALL"]
+unfixable = [
+  "F401",
+  "ISC001"
+]
+
+[lint.flake8-implicit-str-concat]
+allow-multiline = false
+
+[lint.isort]
+combine-as-imports = true
