@@ -23,6 +23,7 @@ module [
     feetToMeters,
     feetToMiles,
     feetToYards,
+    footPoundForceToJoules,
     gallonsToCubicInches,
     gallonsToLiters,
     gallonsToQuarts,
@@ -33,6 +34,7 @@ module [
     inchesToFeet,
     inchesToMeters,
     joulesToCalories,
+    joulesToFootPoundForce,
     joulesToKilocalories,
     joulesToKilowattHours,
     joulesToWattHours,
@@ -228,6 +230,11 @@ expect
     out |> Num.isApproxEq 1.000f64 {}
 feetToYards : F64 -> F64
 feetToYards = \x -> (Num.toF64 x) / 3
+footPoundForceToJoules : F64 -> F64
+footPoundForceToJoules = \x -> x * ((feetToMeters 1) * (poundForceToNewtons 1))
+expect
+    out = footPoundForceToJoules 7375.621f64
+    out |> Num.isApproxEq 10000.000f64 {}
 gallonsToCubicInches : F64 -> F64
 gallonsToCubicInches = \x -> x * 231
 expect
@@ -275,6 +282,11 @@ joulesToCalories = \x -> (Num.toF64 x) / 4.184
 expect
     out = joulesToCalories 4184.000f64
     out |> Num.isApproxEq 1000.000f64 {}
+joulesToFootPoundForce : F64 -> F64
+joulesToFootPoundForce = \x -> (Num.toF64 x) / ((feetToMeters 1) * (poundForceToNewtons 1))
+expect
+    out = joulesToFootPoundForce 10000.000f64
+    out |> Num.isApproxEq 7375.621f64 {}
 joulesToKilocalories : F64 -> F64
 joulesToKilocalories = \x -> x |> joulesToCalories |> caloriesToKilocalories
 joulesToKilowattHours : F64 -> F64
