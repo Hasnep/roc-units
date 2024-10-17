@@ -26,6 +26,8 @@ module [
     toJoules,
     calories,
     toCalories,
+    footPoundForce,
+    toFootPoundForce,
     kilocalories,
     toKilocalories,
     kilowattHours,
@@ -257,6 +259,14 @@ calories = \x -> joules (Convert.caloriesToJoules x)
 toCalories : Energy F64 -> F64
 toCalories = \@Quantity x -> Convert.joulesToCalories x
 
+## Parse a number as a energy in foot pound-force (ft·lbf).
+footPoundForce : F64 -> Energy F64
+footPoundForce = \x -> joules (Convert.footPoundForceToJoules x)
+
+## Convert a energy to a number of foot pound-force (ft·lbf).
+toFootPoundForce : Energy F64 -> F64
+toFootPoundForce = \@Quantity x -> Convert.joulesToFootPoundForce x
+
 ## Parse a number as a energy in kilocalories.
 kilocalories : F64 -> Energy F64
 kilocalories = \x -> joules (Convert.kilocaloriesToJoules x)
@@ -283,11 +293,11 @@ newtons = \x -> @Quantity x
 toNewtons : Force F64 -> F64
 toNewtons = \@Quantity x -> x
 
-## Parse a number as a force in pound force (lbf).
+## Parse a number as a force in pound-force (lbf).
 poundForce : F64 -> Force F64
 poundForce = \x -> newtons (Convert.poundForceToNewtons x)
 
-## Convert a force to a number of pound force (lbf).
+## Convert a force to a number of pound-force (lbf).
 toPoundForce : Force F64 -> F64
 toPoundForce = \@Quantity x -> Convert.newtonsToPoundForce x
 

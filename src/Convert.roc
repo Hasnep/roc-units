@@ -23,6 +23,7 @@ module [
     feetToMeters,
     feetToMiles,
     feetToYards,
+    footPoundForceToJoules,
     gallonsToCubicInches,
     gallonsToLiters,
     gallonsToQuarts,
@@ -33,6 +34,7 @@ module [
     inchesToFeet,
     inchesToMeters,
     joulesToCalories,
+    joulesToFootPoundForce,
     joulesToKilocalories,
     joulesToKilowattHours,
     joulesToWattHours,
@@ -228,6 +230,11 @@ expect
     out |> Num.isApproxEq 1.000f64 {}
 feetToYards : F64 -> F64
 feetToYards = \x -> (Num.toF64 x) / 3
+footPoundForceToJoules : F64 -> F64
+footPoundForceToJoules = \x -> x * ((feetToMeters 1) * (poundForceToNewtons 1))
+expect
+    out = footPoundForceToJoules 10.000f64
+    out |> Num.isApproxEq 13.558f64 {}
 gallonsToCubicInches : F64 -> F64
 gallonsToCubicInches = \x -> x * 231
 expect
@@ -275,6 +282,11 @@ joulesToCalories = \x -> (Num.toF64 x) / 4.184
 expect
     out = joulesToCalories 4184.000f64
     out |> Num.isApproxEq 1000.000f64 {}
+joulesToFootPoundForce : F64 -> F64
+joulesToFootPoundForce = \x -> (Num.toF64 x) / ((feetToMeters 1) * (poundForceToNewtons 1))
+expect
+    out = joulesToFootPoundForce 13.558f64
+    out |> Num.isApproxEq 10.000f64 {}
 joulesToKilocalories : F64 -> F64
 joulesToKilocalories = \x -> x |> joulesToCalories |> caloriesToKilocalories
 joulesToKilowattHours : F64 -> F64
@@ -382,6 +394,9 @@ expect
     out |> Num.isApproxEq 331.460f64 {}
 metersPerSecondPerSecondToStandardGravity : F64 -> F64
 metersPerSecondPerSecondToStandardGravity = \x -> (Num.toF64 x) / 9.80665
+expect
+    out = metersPerSecondPerSecondToStandardGravity 98.067f64
+    out |> Num.isApproxEq 10.000f64 {}
 metersPerSecondToFeetPerSecond : F64 -> F64
 metersPerSecondToFeetPerSecond = \x -> x * (metersToFeet 1)
 expect
@@ -496,7 +511,10 @@ expect
     out = nauticalMilesToMeters 1.000f64
     out |> Num.isApproxEq 1852.000f64 {}
 newtonsToPoundForce : F64 -> F64
-newtonsToPoundForce = \x -> x * (poundsToKilograms 1) / (standardGravityToMetersPerSecondPerSecond 1)
+newtonsToPoundForce = \x -> (Num.toF64 x) / poundsToKilograms (standardGravityToMetersPerSecondPerSecond 1)
+expect
+    out = newtonsToPoundForce 10.000f64
+    out |> Num.isApproxEq 2.248f64 {}
 nibblesToBits : F64 -> F64
 nibblesToBits = \x -> x * 4
 expect
@@ -527,7 +545,10 @@ pintsToLiters = \x -> x |> pintsToQuarts |> quartsToGallons |> gallonsToCubicInc
 pintsToQuarts : F64 -> F64
 pintsToQuarts = \x -> (Num.toF64 x) / 2
 poundForceToNewtons : F64 -> F64
-poundForceToNewtons = \x -> (Num.toF64 x) / (poundsToKilograms 1) / (standardGravityToMetersPerSecondPerSecond 1)
+poundForceToNewtons = \x -> x * poundsToKilograms (standardGravityToMetersPerSecondPerSecond 1)
+expect
+    out = poundForceToNewtons 2.248f64
+    out |> Num.isApproxEq 10.000f64 {}
 poundsToKilograms : F64 -> F64
 poundsToKilograms = \x -> x * 0.45359237
 expect
@@ -584,6 +605,9 @@ expect
     out |> Num.isApproxEq 1076.391f64 {}
 standardGravityToMetersPerSecondPerSecond : F64 -> F64
 standardGravityToMetersPerSecondPerSecond = \x -> x * 9.80665
+expect
+    out = standardGravityToMetersPerSecondPerSecond 10.000f64
+    out |> Num.isApproxEq 98.067f64 {}
 tablespoonsToLiters : F64 -> F64
 tablespoonsToLiters = \x -> x |> tablespoonsToMilliliters |> millilitersToLiters
 tablespoonsToMilliliters : F64 -> F64
