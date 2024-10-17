@@ -168,6 +168,14 @@ name = "liters"
 symbol = "L"
 
 [[volume]]
+name = "tablespoons"
+symbol = "tbsp"
+
+[[volume]]
+name = "teaspoons"
+symbol = "tsp"
+
+[[volume]]
 name = "cubic centimeters"
 symbol = "cm³"
 
