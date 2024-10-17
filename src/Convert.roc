@@ -149,10 +149,10 @@ expect
     out = bytesToBits 1.000f64
     out |> Num.isApproxEq 8.000f64 {}
 caloriesToJoules : F64 -> F64
-caloriesToJoules = \x -> x * 4.1868
+caloriesToJoules = \x -> x * 4.184
 expect
     out = caloriesToJoules 1000.000f64
-    out |> Num.isApproxEq 4186.800f64 {}
+    out |> Num.isApproxEq 4184.000f64 {}
 caloriesToKiloCalories : F64 -> F64
 caloriesToKiloCalories = \x -> (Num.toF64 x) / 1000
 expect
@@ -264,9 +264,9 @@ expect
     out = inchesToMeters 39.370f64
     out |> Num.isApproxEq 1.000f64 {}
 joulesToCalories : F64 -> F64
-joulesToCalories = \x -> (Num.toF64 x) / 4.1868
+joulesToCalories = \x -> (Num.toF64 x) / 4.184
 expect
-    out = joulesToCalories 4186.800f64
+    out = joulesToCalories 4184.000f64
     out |> Num.isApproxEq 1000.000f64 {}
 joulesToKiloCalories : F64 -> F64
 joulesToKiloCalories = \x -> x |> joulesToCalories |> caloriesToKiloCalories
