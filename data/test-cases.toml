@@ -1,0 +1,269 @@
+[[area]]
+from_unit = "square feet"
+from_value = 1_076.391042
+to_unit = "square meters"
+to_value = 100
+
+[[data]]
+from_unit = "bits"
+from_value = 8
+to_unit = "bytes"
+to_value = 1
+
+[[data]]
+from_unit = "bits"
+from_value = 4
+to_unit = "nibbles"
+to_value = 1
+
+[[energy]]
+from_unit = "joules"
+from_value = 4_186.8
+to_unit = "calories"
+to_value = 1_000
+
+[[energy]]
+from_unit = "calories"
+from_value = 1000
+to_unit = "kilo calories"
+to_value = 1
+
+[[energy]]
+from_unit = "joules"
+from_value = 3_600
+to_unit = "watt hours"
+to_value = 1
+
+[[energy]]
+from_unit = "kilowatt hours"
+from_value = 1
+to_unit = "watt hours"
+to_value = 1_000
+
+[[energy]]
+from_unit = "kilowatt hours"
+from_value = 1
+to_unit = "joules"
+to_value = 3_600_000
+
+[[length]]
+from_unit = "angstroms"
+from_value = 10_000_000_000
+to_unit = "meters"
+to_value = 1
+
+[[length]]
+from_unit = "astronomical units"
+from_value = 1
+to_unit = "meters"
+to_value = 149_597_870_700
+
+[[length]]
+from_unit = "meters"
+from_value = 1
+to_unit = "centimeters"
+to_value = 100
+
+[[length]]
+from_unit = "miles"
+from_value = 1
+to_unit = "feet"
+to_value = 5_280
+
+[[length]]
+from_unit = "meters"
+from_value = 1_609.34
+to_unit = "miles"
+to_value = 1
+
+[[length]]
+from_unit = "meters"
+from_value = 1_852
+to_unit = "nautical miles"
+to_value = 1
+
+[[length]]
+from_unit = "meters"
+from_value = 1
+to_unit = "inches"
+to_value = 39.37
+
+[[length]]
+from_unit = "meters"
+from_value = 9_460_730_473_000_000
+to_unit = "light years"
+to_value = 1
+
+[[length]]
+from_unit = "meters"
+from_value = 1_000
+to_unit = "kilometers"
+to_value = 1
+
+[[length]]
+from_unit = "meters"
+from_value = 1_000
+to_unit = "feet"
+to_value = 3_280.839895
+
+[[length]]
+from_unit = "feet"
+from_value = 1
+to_unit = "inches"
+to_value = 12
+
+[[mass]]
+from_unit = "tons"
+from_value = 1
+to_unit = "kilograms"
+to_value = 907.18474
+
+[[mass]]
+from_unit = "tonnes"
+from_value = 1
+to_unit = "kilograms"
+to_value = 1_000
+
+[[mass]]
+from_unit = "tons"
+from_value = 1
+to_unit = "pounds"
+to_value = 2_000
+
+[[mass]]
+from_unit = "kilograms"
+from_value = 1_000
+to_unit = "pounds"
+to_value = 2_204.6226218488
+
+[[mass]]
+from_unit = "kilograms"
+from_value = 1
+to_unit = "ounces"
+to_value = 35.27396195
+
+[[mass]]
+from_unit = "pounds"
+from_value = 1
+to_unit = "ounces"
+to_value = 16
+
+[[mass]]
+from_unit = "kilograms"
+from_value = 1
+to_unit = "grams"
+to_value = 1_000
+
+[[pressure]]
+from_unit = "atmospheres"
+from_value = 1
+to_unit = "pascals"
+to_value = 101_325
+
+[[pressure]]
+from_unit = "bars"
+from_value = 1
+to_unit = "pascals"
+to_value = 100_000
+
+[[speed]]
+from_unit = "miles per hour"
+from_value = 123
+to_unit = "meters per second"
+to_value = 54.98592
+
+[[speed]]
+from_unit = "mach"
+from_value = 1
+to_unit = "meters per second"
+to_value = 331.46
+
+[[speed]]
+from_unit = "light speed"
+from_value = 1
+to_unit = "meters per second"
+to_value = 299_792_458
+
+[[speed]]
+from_unit = "meters per second"
+from_value = 10
+to_unit = "kilometers per hour"
+to_value = 36
+
+[[speed]]
+from_unit = "meters per second"
+from_value = 321
+to_unit = "knots"
+to_value = 623.9740821
+
+[[speed]]
+from_unit = "meters per second"
+from_value = 100
+to_unit = "feet per second"
+to_value = 328.084
+
+[[time]]
+from_unit = "minutes"
+from_value = 1
+to_unit = "seconds"
+to_value = 60
+
+[[time]]
+from_unit = "hours"
+from_value = 1
+to_unit = "seconds"
+to_value = 3_600
+
+[[time]]
+from_unit = "days"
+from_value = 1
+to_unit = "seconds"
+to_value = 86_400
+
+[[time]]
+from_unit = "weeks"
+from_value = 1
+to_unit = "days"
+to_value = 7
+
+[[time]]
+from_unit = "weeks"
+from_value = 1
+to_unit = "seconds"
+to_value = 604_800
+
+[[time]]
+from_unit = "hours"
+from_value = 24
+to_unit = "days"
+to_value = 1
+
+[[time]]
+from_unit = "minutes"
+from_value = 60
+to_unit = "hours"
+to_value = 1
+
+[[volume]]
+from_unit = "quarts"
+from_value = 4
+to_unit = "gallons"
+to_value = 1
+
+[[volume]]
+from_unit = "cubic meters"
+from_value = 1
+to_unit = "liters"
+to_value = 1_000
+
+[[volume]]
+from_unit = "liters"
+from_value = 1
+to_unit = "cubic centimeters"
+to_value = 1_000
+
+[[volume]]
+from_unit = "cubic inches"
+from_value = 231
+to_unit = "gallons"
+to_value = 1

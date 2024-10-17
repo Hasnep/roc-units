@@ -1,4 +1,8 @@
-default: format check test docs examples
+default: codegen format check test docs examples
+
+codegen:
+    python3 codegen.py
+    just format
 
 format:
     roc format src/

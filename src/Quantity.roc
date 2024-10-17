@@ -140,16 +140,16 @@ Time a : Quantity a Seconds
 Volume a : Quantity a Liters
 
 # Canonical units
-Meters := [Meters]
+Bits := [Bits]
+Joules : Product Newtons Meters
 Kilograms := [Kilograms]
-SquareMeters : Squared Meters
-Seconds := [Seconds]
 Liters : Squared (Squared Meters)
+Meters := [Meters]
+MetersPerSecond : Per Meters Seconds
 Newtons : Per (Product Kilograms Meters) (Squared Seconds)
 Pascals : Per Newtons SquareMeters
-Joules : Product Newtons Meters
-MetersPerSecond : Per Meters Seconds
-Bits := [Bits]
+Seconds := [Seconds]
+SquareMeters : Squared Meters
 
 quantity : F64, units -> Quantity F64 units
 quantity = \num, _ -> @Quantity num

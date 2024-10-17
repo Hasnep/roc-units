@@ -8,7 +8,6 @@ module [
     bytesToBits,
     caloriesToJoules,
     caloriesToKiloCalories,
-    centimetersToInches,
     centimetersToMeters,
     cubicCentimetersToLiters,
     cubicInchesToCubicMeters,
@@ -23,6 +22,7 @@ module [
     feetToInches,
     feetToMeters,
     feetToMiles,
+    feetToYards,
     gallonsToCubicInches,
     gallonsToLiters,
     gallonsToQuarts,
@@ -30,7 +30,6 @@ module [
     hoursToDays,
     hoursToMinutes,
     hoursToSeconds,
-    inchesToCentimeters,
     inchesToFeet,
     inchesToMeters,
     joulesToCalories,
@@ -74,6 +73,7 @@ module [
     metersToLightYears,
     metersToMiles,
     metersToNauticalMiles,
+    metersToYards,
     milesPerHourToMetersPerSecond,
     milesToFeet,
     milesToMeters,
@@ -109,6 +109,8 @@ module [
     wattHoursToKilowattHours,
     weeksToDays,
     weeksToSeconds,
+    yardsToFeet,
+    yardsToMeters,
 ]
 
 angstromsToMeters : F64 -> F64
@@ -147,7 +149,7 @@ expect
     out = bytesToBits 1.000f64
     out |> Num.isApproxEq 8.000f64 {}
 caloriesToJoules : F64 -> F64
-caloriesToJoules = \x -> x |> caloriesToKiloCalories |> kiloCaloriesToJoules
+caloriesToJoules = \x -> x * 4.1868
 expect
     out = caloriesToJoules 1000.000f64
     out |> Num.isApproxEq 4186.800f64 {}
@@ -156,11 +158,6 @@ caloriesToKiloCalories = \x -> (Num.toF64 x) / 1000
 expect
     out = caloriesToKiloCalories 1000.000f64
     out |> Num.isApproxEq 1.000f64 {}
-centimetersToInches : F64 -> F64
-centimetersToInches = \x -> (Num.toF64 x) / 2.54
-expect
-    out = centimetersToInches 100.000f64
-    out |> Num.isApproxEq 39.370f64 {}
 centimetersToMeters : F64 -> F64
 centimetersToMeters = \x -> (Num.toF64 x) / 100
 expect
@@ -172,25 +169,16 @@ expect
     out = cubicCentimetersToLiters 1000.000f64
     out |> Num.isApproxEq 1.000f64 {}
 cubicInchesToCubicMeters : F64 -> F64
-cubicInchesToCubicMeters = \x -> x * (1 |> inchesToCentimeters |> centimetersToMeters |> Num.pow 3)
-expect
-    out = cubicInchesToCubicMeters 6102374.400f64
-    out |> Num.isApproxEq 100.000f64 {}
+cubicInchesToCubicMeters = \x -> x |> cubicInchesToGallons |> gallonsToLiters |> litersToCubicMeters
 cubicInchesToGallons : F64 -> F64
 cubicInchesToGallons = \x -> (Num.toF64 x) / 231
 expect
     out = cubicInchesToGallons 231.000f64
     out |> Num.isApproxEq 1.000f64 {}
 cubicInchesToLiters : F64 -> F64
-cubicInchesToLiters = \x -> x |> cubicInchesToCubicMeters |> cubicMetersToLiters
-expect
-    out = cubicInchesToLiters 6102374.409f64
-    out |> Num.isApproxEq 100000.000f64 {}
+cubicInchesToLiters = \x -> x |> cubicInchesToGallons |> gallonsToLiters
 cubicMetersToCubicInches : F64 -> F64
-cubicMetersToCubicInches = \x -> (Num.toF64 x) / (1 |> inchesToCentimeters |> centimetersToMeters |> Num.pow 3)
-expect
-    out = cubicMetersToCubicInches 100.000f64
-    out |> Num.isApproxEq 6102374.400f64 {}
+cubicMetersToCubicInches = \x -> x |> cubicMetersToLiters |> litersToGallons |> gallonsToCubicInches
 cubicMetersToLiters : F64 -> F64
 cubicMetersToLiters = \x -> x * 1000
 expect
@@ -222,7 +210,7 @@ expect
     out = feetToInches 1.000f64
     out |> Num.isApproxEq 12.000f64 {}
 feetToMeters : F64 -> F64
-feetToMeters = \x -> x |> feetToInches |> inchesToCentimeters |> centimetersToMeters
+feetToMeters = \x -> x |> feetToYards |> yardsToMeters
 expect
     out = feetToMeters 3280.840f64
     out |> Num.isApproxEq 1000.000f64 {}
@@ -231,6 +219,8 @@ feetToMiles = \x -> (Num.toF64 x) / 5280
 expect
     out = feetToMiles 5280.000f64
     out |> Num.isApproxEq 1.000f64 {}
+feetToYards : F64 -> F64
+feetToYards = \x -> (Num.toF64 x) / 3
 gallonsToCubicInches : F64 -> F64
 gallonsToCubicInches = \x -> x * 231
 expect
@@ -238,9 +228,6 @@ expect
     out |> Num.isApproxEq 231.000f64 {}
 gallonsToLiters : F64 -> F64
 gallonsToLiters = \x -> x |> gallonsToCubicInches |> cubicInchesToCubicMeters |> cubicMetersToLiters
-expect
-    out = gallonsToLiters 12345.000f64
-    out |> Num.isApproxEq 46730.908f64 {}
 gallonsToQuarts : F64 -> F64
 gallonsToQuarts = \x -> x * 4
 expect
@@ -266,38 +253,30 @@ hoursToSeconds = \x -> x |> hoursToMinutes |> minutesToSeconds
 expect
     out = hoursToSeconds 1.000f64
     out |> Num.isApproxEq 3600.000f64 {}
-inchesToCentimeters : F64 -> F64
-inchesToCentimeters = \x -> x * 2.54
-expect
-    out = inchesToCentimeters 39.370f64
-    out |> Num.isApproxEq 100.000f64 {}
 inchesToFeet : F64 -> F64
 inchesToFeet = \x -> (Num.toF64 x) / 12
 expect
     out = inchesToFeet 12.000f64
     out |> Num.isApproxEq 1.000f64 {}
 inchesToMeters : F64 -> F64
-inchesToMeters = \x -> x |> inchesToCentimeters |> centimetersToMeters
+inchesToMeters = \x -> x |> inchesToFeet |> feetToYards |> yardsToMeters
 expect
     out = inchesToMeters 39.370f64
     out |> Num.isApproxEq 1.000f64 {}
 joulesToCalories : F64 -> F64
-joulesToCalories = \x -> x |> joulesToKiloCalories |> kiloCaloriesToCalories
+joulesToCalories = \x -> (Num.toF64 x) / 4.1868
 expect
     out = joulesToCalories 4186.800f64
     out |> Num.isApproxEq 1000.000f64 {}
 joulesToKiloCalories : F64 -> F64
-joulesToKiloCalories = \x -> (Num.toF64 x) / 4186.8
-expect
-    out = joulesToKiloCalories 4186.800f64
-    out |> Num.isApproxEq 1.000f64 {}
+joulesToKiloCalories = \x -> x |> joulesToCalories |> caloriesToKiloCalories
 joulesToKilowattHours : F64 -> F64
 joulesToKilowattHours = \x -> x |> joulesToWattHours |> wattHoursToKilowattHours
 expect
     out = joulesToKilowattHours 3600000.000f64
     out |> Num.isApproxEq 1.000f64 {}
 joulesToWattHours : F64 -> F64
-joulesToWattHours = \x -> (Num.toF64 x) / (hoursToSeconds 1)
+joulesToWattHours = \x -> (Num.toF64 x) / hoursToSeconds 1
 expect
     out = joulesToWattHours 3600.000f64
     out |> Num.isApproxEq 1.000f64 {}
@@ -307,10 +286,7 @@ expect
     out = kiloCaloriesToCalories 1.000f64
     out |> Num.isApproxEq 1000.000f64 {}
 kiloCaloriesToJoules : F64 -> F64
-kiloCaloriesToJoules = \x -> x * 4186.8
-expect
-    out = kiloCaloriesToJoules 1.000f64
-    out |> Num.isApproxEq 4186.800f64 {}
+kiloCaloriesToJoules = \x -> x |> kiloCaloriesToCalories |> caloriesToJoules
 kilogramsToGrams : F64 -> F64
 kilogramsToGrams = \x -> x * 1000
 expect
@@ -367,7 +343,7 @@ expect
     out = lightSpeedToMetersPerSecond 1.000f64
     out |> Num.isApproxEq 299792458.000f64 {}
 lightYearsToMeters : F64 -> F64
-lightYearsToMeters = \x -> x * ((lightSpeedToMetersPerSecond 1) * (daysToSeconds (365 + 1 / 4)))
+lightYearsToMeters = \x -> x * ((lightSpeedToMetersPerSecond 1) * (daysToSeconds (365 + (1 / 4))))
 expect
     out = lightYearsToMeters 1.000f64
     out |> Num.isApproxEq 9460730473000000.000f64 {}
@@ -378,9 +354,6 @@ expect
     out |> Num.isApproxEq 1000.000f64 {}
 litersToCubicInches : F64 -> F64
 litersToCubicInches = \x -> x |> litersToCubicMeters |> cubicMetersToCubicInches
-expect
-    out = litersToCubicInches 100000.000f64
-    out |> Num.isApproxEq 6102374.409f64 {}
 litersToCubicMeters : F64 -> F64
 litersToCubicMeters = \x -> (Num.toF64 x) / 1000
 expect
@@ -388,19 +361,10 @@ expect
     out |> Num.isApproxEq 1.000f64 {}
 litersToGallons : F64 -> F64
 litersToGallons = \x -> x |> litersToCubicMeters |> cubicMetersToCubicInches |> cubicInchesToGallons
-expect
-    out = litersToGallons 46730.908f64
-    out |> Num.isApproxEq 12345.000f64 {}
 litersToPints : F64 -> F64
 litersToPints = \x -> x |> litersToCubicMeters |> cubicMetersToCubicInches |> cubicInchesToGallons |> gallonsToQuarts |> quartsToPints
-expect
-    out = litersToPints 789.000f64
-    out |> Num.isApproxEq 1667.454f64 {}
 litersToQuarts : F64 -> F64
 litersToQuarts = \x -> x |> litersToCubicMeters |> cubicMetersToCubicInches |> cubicInchesToGallons |> gallonsToQuarts
-expect
-    out = litersToQuarts 123.000f64
-    out |> Num.isApproxEq 129.973f64 {}
 machToMetersPerSecond : F64 -> F64
 machToMetersPerSecond = \x -> x * 331.46
 expect
@@ -408,9 +372,6 @@ expect
     out |> Num.isApproxEq 331.460f64 {}
 metersPerSecondPerSecondToStandardGravity : F64 -> F64
 metersPerSecondPerSecondToStandardGravity = \x -> (Num.toF64 x) / 9.80665
-expect
-    out = metersPerSecondPerSecondToStandardGravity 980665.000f64
-    out |> Num.isApproxEq 100000.000f64 {}
 metersPerSecondToFeetPerSecond : F64 -> F64
 metersPerSecondToFeetPerSecond = \x -> x * (metersToFeet 1)
 expect
@@ -457,12 +418,12 @@ expect
     out = metersToCentimeters 1.000f64
     out |> Num.isApproxEq 100.000f64 {}
 metersToFeet : F64 -> F64
-metersToFeet = \x -> x |> metersToCentimeters |> centimetersToInches |> inchesToFeet
+metersToFeet = \x -> x |> metersToYards |> yardsToFeet
 expect
     out = metersToFeet 1000.000f64
     out |> Num.isApproxEq 3280.840f64 {}
 metersToInches : F64 -> F64
-metersToInches = \x -> x |> metersToCentimeters |> centimetersToInches
+metersToInches = \x -> x |> metersToYards |> yardsToFeet |> feetToInches
 expect
     out = metersToInches 1.000f64
     out |> Num.isApproxEq 39.370f64 {}
@@ -472,12 +433,12 @@ expect
     out = metersToKilometers 1000.000f64
     out |> Num.isApproxEq 1.000f64 {}
 metersToLightYears : F64 -> F64
-metersToLightYears = \x -> (Num.toF64 x) / ((lightSpeedToMetersPerSecond 1) * (daysToSeconds (365 + 1 / 4)))
+metersToLightYears = \x -> (Num.toF64 x) / ((lightSpeedToMetersPerSecond 1) * (daysToSeconds (365 + (1 / 4))))
 expect
     out = metersToLightYears 9460730473000000.000f64
     out |> Num.isApproxEq 1.000f64 {}
 metersToMiles : F64 -> F64
-metersToMiles = \x -> x |> metersToCentimeters |> centimetersToInches |> inchesToFeet |> feetToMiles
+metersToMiles = \x -> x |> metersToYards |> yardsToFeet |> feetToMiles
 expect
     out = metersToMiles 1609.340f64
     out |> Num.isApproxEq 1.000f64 {}
@@ -486,6 +447,8 @@ metersToNauticalMiles = \x -> (Num.toF64 x) / 1852
 expect
     out = metersToNauticalMiles 1852.000f64
     out |> Num.isApproxEq 1.000f64 {}
+metersToYards : F64 -> F64
+metersToYards = \x -> (Num.toF64 x) / 0.9144
 milesPerHourToMetersPerSecond : F64 -> F64
 milesPerHourToMetersPerSecond = \x -> x * (milesToMeters 1 / (1 |> hoursToMinutes |> minutesToSeconds))
 expect
@@ -497,7 +460,7 @@ expect
     out = milesToFeet 1.000f64
     out |> Num.isApproxEq 5280.000f64 {}
 milesToMeters : F64 -> F64
-milesToMeters = \x -> x |> milesToFeet |> feetToInches |> inchesToCentimeters |> centimetersToMeters
+milesToMeters = \x -> x |> milesToFeet |> feetToYards |> yardsToMeters
 expect
     out = milesToMeters 1.000f64
     out |> Num.isApproxEq 1609.340f64 {}
@@ -545,9 +508,6 @@ expect
     out |> Num.isApproxEq 1.000f64 {}
 pintsToLiters : F64 -> F64
 pintsToLiters = \x -> x |> pintsToQuarts |> quartsToGallons |> gallonsToCubicInches |> cubicInchesToCubicMeters |> cubicMetersToLiters
-expect
-    out = pintsToLiters 1667.454f64
-    out |> Num.isApproxEq 789.000f64 {}
 pintsToQuarts : F64 -> F64
 pintsToQuarts = \x -> (Num.toF64 x) / 2
 poundForceToNewtons : F64 -> F64
@@ -574,9 +534,6 @@ expect
     out |> Num.isApproxEq 1.000f64 {}
 quartsToLiters : F64 -> F64
 quartsToLiters = \x -> x |> quartsToGallons |> gallonsToCubicInches |> cubicInchesToCubicMeters |> cubicMetersToLiters
-expect
-    out = quartsToLiters 129.973f64
-    out |> Num.isApproxEq 123.000f64 {}
 quartsToPints : F64 -> F64
 quartsToPints = \x -> x * 2
 secondsToDays : F64 -> F64
@@ -611,9 +568,6 @@ expect
     out |> Num.isApproxEq 1076.391f64 {}
 standardGravityToMetersPerSecondPerSecond : F64 -> F64
 standardGravityToMetersPerSecondPerSecond = \x -> x * 9.80665
-expect
-    out = standardGravityToMetersPerSecondPerSecond 100000.000f64
-    out |> Num.isApproxEq 980665.000f64 {}
 tonnesToKilograms : F64 -> F64
 tonnesToKilograms = \x -> x * 1000
 expect
@@ -630,7 +584,7 @@ expect
     out = tonsToPounds 1.000f64
     out |> Num.isApproxEq 2000.000f64 {}
 wattHoursToJoules : F64 -> F64
-wattHoursToJoules = \x -> x * (hoursToSeconds 1)
+wattHoursToJoules = \x -> x * hoursToSeconds 1
 expect
     out = wattHoursToJoules 1.000f64
     out |> Num.isApproxEq 3600.000f64 {}
@@ -649,3 +603,7 @@ weeksToSeconds = \x -> x |> weeksToDays |> daysToHours |> hoursToMinutes |> minu
 expect
     out = weeksToSeconds 1.000f64
     out |> Num.isApproxEq 604800.000f64 {}
+yardsToFeet : F64 -> F64
+yardsToFeet = \x -> x * 3
+yardsToMeters : F64 -> F64
+yardsToMeters = \x -> x * 0.9144

@@ -1,0 +1,186 @@
+[[acceleration]]
+name = "meters per second per second"
+symbol = "m/s/s"
+
+[[acceleration]]
+name = "standard gravity"
+
+[[area]]
+name = "square meters"
+
+[[area]]
+name = "square feet"
+
+[[data]]
+name = "bits"
+symbol = "b"
+
+[[data]]
+name = "bytes"
+symbol = "B"
+
+[[data]]
+name = "nibbles"
+
+[[energy]]
+name = "joules"
+symbol = "J"
+
+[[energy]]
+info = "Thermochemical calories"
+name = "calories"
+
+[[energy]]
+info = "Thermochemical kilocalories"
+name = "kilo calories"
+other_names = ["Calories"]
+
+[[energy]]
+name = "kilowatt hours"
+symbol = "kWh"
+
+[[force]]
+name = "newtons"
+symbol = "N"
+
+[[force]]
+name = "pound force"
+symbol = "lbf"
+
+[[length]]
+name = "meters"
+symbol = "m"
+
+[[length]]
+name = "feet"
+symbol = "ft"
+
+[[length]]
+name = "kilometers"
+symbol = "km"
+
+[[length]]
+name = "angstroms"
+other_names = ["ångströms"]
+
+[[length]]
+name = "astronomical units"
+symbol = "AU"
+
+[[length]]
+name = "centimeters"
+other_names = ["centimetres"]
+symbol = "cm"
+
+[[length]]
+name = "miles"
+symbol = "mi"
+
+[[length]]
+name = "nautical miles"
+
+[[length]]
+name = "inches"
+symbol = "in"
+
+[[length]]
+name = "light years"
+symbol = "ly"
+
+[[mass]]
+name = "kilograms"
+symbol = "kg"
+
+[[mass]]
+name = "pounds"
+symbol = "lb"
+
+[[mass]]
+name = "grams"
+symbol = "g"
+
+[[mass]]
+name = "tonnes"
+other_names = ["metric tons"]
+symbol = "T"
+
+[[mass]]
+name = "ounces"
+symbol = "oz"
+
+[[mass]]
+name = "tons"
+
+[[pressure]]
+name = "pascals"
+symbol = "Pa"
+
+[[pressure]]
+name = "bars"
+
+[[pressure]]
+name = "atmospheres"
+
+[[speed]]
+name = "meters per second"
+symbol = "m/s"
+
+[[speed]]
+name = "light speed"
+symbol = "c"
+
+[[speed]]
+name = "miles per hour"
+symbol = "mph"
+
+[[speed]]
+name = "kilometers per hour"
+symbol = "kph"
+
+[[speed]]
+name = "feet per second"
+symbol = "ft/s"
+
+[[speed]]
+name = "knots"
+
+[[speed]]
+name = "mach"
+
+[[time]]
+name = "seconds"
+symbol = "s"
+
+[[time]]
+name = "hours"
+
+[[time]]
+name = "minutes"
+
+[[time]]
+name = "days"
+
+[[time]]
+name = "weeks"
+
+[[volume]]
+name = "liters"
+symbol = "L"
+
+[[volume]]
+name = "cubic centimeters"
+
+[[volume]]
+name = "cubic meters"
+
+[[volume]]
+name = "gallons"
+
+[[volume]]
+name = "quarts"
+
+[[volume]]
+name = "pints"
+
+[[volume]]
+name = "cubic inches"

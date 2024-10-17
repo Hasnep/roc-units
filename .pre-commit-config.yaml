@@ -55,6 +55,45 @@ repos:
         entry: roc format --check
         files: \.roc$
 
+  # Python
+  - repo: local
+    hooks:
+      - name: Format Python files
+        id: python-format
+        language: system
+        entry: ruff format
+        types: [python]
+  - repo: local
+    hooks:
+      - name: Lint Python files
+        id: python-lint
+        language: system
+        entry: ruff check --fix
+        types: [python]
+  - repo: local
+    hooks:
+      - name: Type-check Python files
+        id: python-type-check
+        language: system
+        entry: basedpyright
+        types: [python]
+  - repo: local
+    hooks:
+      - name: Sort Python files
+        id: python-sort
+        language: system
+        entry: ssort
+        types: [python]
+
+  # TOML
+  - repo: local
+    hooks:
+      - name: Format TOML files
+        id: toml-format
+        language: system
+        entry: toml-sort --all --in-place
+        types: [toml]
+
   # YAML
   - repo: local
     hooks:
@@ -92,3 +131,12 @@ repos:
         language: system
         entry: nixfmt
         types: [nix]
+
+  # Codegen
+  - repo: local
+    hooks:
+      - name: Run codegen
+        id: codegen
+        language: system
+        entry: just codegen
+        pass_filenames: false

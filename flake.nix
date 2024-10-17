@@ -38,12 +38,21 @@
             packages = [
               inputs'.roc.packages.cli
               pkgs.just
+              # Codegen tooling
+              (pkgs.python3.withPackages (python-pkgs: [
+                python-pkgs.msgspec
+                python-pkgs.ssort
+                python-pkgs.venvShellHook
+              ]))
               # Pre-commit
+              pkgs.basedpyright
               pkgs.check-jsonschema
               pkgs.nixfmt-rfc-style
               pkgs.nodePackages.prettier
               pkgs.pre-commit
               pkgs.python312Packages.pre-commit-hooks
+              pkgs.ruff
+              pkgs.toml-sort
             ];
             shellHook = "pre-commit install --overwrite";
           };
