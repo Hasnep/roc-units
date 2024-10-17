@@ -32,7 +32,7 @@ name = "calories"
 
 [[energy]]
 info = "Thermochemical kilocalories"
-name = "kilo calories"
+name = "kilocalories"
 other_names = ["Calories"]
 
 [[energy]]

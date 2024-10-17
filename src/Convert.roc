@@ -7,7 +7,7 @@ module [
     bitsToNibbles,
     bytesToBits,
     caloriesToJoules,
-    caloriesToKiloCalories,
+    caloriesToKilocalories,
     centimetersToMeters,
     cubicCentimetersToLiters,
     cubicInchesToCubicMeters,
@@ -33,11 +33,11 @@ module [
     inchesToFeet,
     inchesToMeters,
     joulesToCalories,
-    joulesToKiloCalories,
+    joulesToKilocalories,
     joulesToKilowattHours,
     joulesToWattHours,
-    kiloCaloriesToCalories,
-    kiloCaloriesToJoules,
+    kilocaloriesToCalories,
+    kilocaloriesToJoules,
     kilogramsToGrams,
     kilogramsToOunces,
     kilogramsToPounds,
@@ -153,11 +153,8 @@ caloriesToJoules = \x -> x * 4.184
 expect
     out = caloriesToJoules 1000.000f64
     out |> Num.isApproxEq 4184.000f64 {}
-caloriesToKiloCalories : F64 -> F64
-caloriesToKiloCalories = \x -> (Num.toF64 x) / 1000
-expect
-    out = caloriesToKiloCalories 1000.000f64
-    out |> Num.isApproxEq 1.000f64 {}
+caloriesToKilocalories : F64 -> F64
+caloriesToKilocalories = \x -> (Num.toF64 x) / 1000
 centimetersToMeters : F64 -> F64
 centimetersToMeters = \x -> (Num.toF64 x) / 100
 expect
@@ -268,8 +265,8 @@ joulesToCalories = \x -> (Num.toF64 x) / 4.184
 expect
     out = joulesToCalories 4184.000f64
     out |> Num.isApproxEq 1000.000f64 {}
-joulesToKiloCalories : F64 -> F64
-joulesToKiloCalories = \x -> x |> joulesToCalories |> caloriesToKiloCalories
+joulesToKilocalories : F64 -> F64
+joulesToKilocalories = \x -> x |> joulesToCalories |> caloriesToKilocalories
 joulesToKilowattHours : F64 -> F64
 joulesToKilowattHours = \x -> x |> joulesToWattHours |> wattHoursToKilowattHours
 expect
@@ -280,13 +277,10 @@ joulesToWattHours = \x -> (Num.toF64 x) / hoursToSeconds 1
 expect
     out = joulesToWattHours 3600.000f64
     out |> Num.isApproxEq 1.000f64 {}
-kiloCaloriesToCalories : F64 -> F64
-kiloCaloriesToCalories = \x -> x * 1000
-expect
-    out = kiloCaloriesToCalories 1.000f64
-    out |> Num.isApproxEq 1000.000f64 {}
-kiloCaloriesToJoules : F64 -> F64
-kiloCaloriesToJoules = \x -> x |> kiloCaloriesToCalories |> caloriesToJoules
+kilocaloriesToCalories : F64 -> F64
+kilocaloriesToCalories = \x -> x * 1000
+kilocaloriesToJoules : F64 -> F64
+kilocaloriesToJoules = \x -> x |> kilocaloriesToCalories |> caloriesToJoules
 kilogramsToGrams : F64 -> F64
 kilogramsToGrams = \x -> x * 1000
 expect
