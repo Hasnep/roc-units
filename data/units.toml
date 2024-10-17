@@ -39,6 +39,10 @@ other_names = ["Calories"]
 name = "kilowatt hours"
 symbol = "kWh"
 
+[[energy]]
+name = "foot pound-force"
+symbol = "ft·lbf"
+
 [[force]]
 name = "newtons"
 symbol = "N"
