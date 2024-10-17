@@ -22,7 +22,10 @@ to_unit = "bits"
 
 [[energy]]
 from_unit = "calories"
-scale_factor = "4.1868"
+scale_factor = "4.184"
+sources = [
+  "Thompson, E. A., & Taylor, B. N. (2008). Guide for the use of the International System of Units (SI). https://doi.org/10.6028/nist.sp.811e2008. Table 11, page 11"
+]
 to_unit = "joules"
 
 [[energy]]

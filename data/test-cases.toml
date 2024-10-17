@@ -18,7 +18,7 @@ to_value = 1
 
 [[energy]]
 from_unit = "joules"
-from_value = 4_186.8
+from_value = 4_184
 to_unit = "calories"
 to_value = 1_000
 
