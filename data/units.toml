@@ -44,7 +44,7 @@ name = "newtons"
 symbol = "N"
 
 [[force]]
-name = "pound force"
+name = "pound-force"
 symbol = "lbf"
 
 [[length]]

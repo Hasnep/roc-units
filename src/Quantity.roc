@@ -283,11 +283,11 @@ newtons = \x -> @Quantity x
 toNewtons : Force F64 -> F64
 toNewtons = \@Quantity x -> x
 
-## Parse a number as a force in pound force (lbf).
+## Parse a number as a force in pound-force (lbf).
 poundForce : F64 -> Force F64
 poundForce = \x -> newtons (Convert.poundForceToNewtons x)
 
-## Convert a force to a number of pound force (lbf).
+## Convert a force to a number of pound-force (lbf).
 toPoundForce : Force F64 -> F64
 toPoundForce = \@Quantity x -> Convert.newtonsToPoundForce x
 
