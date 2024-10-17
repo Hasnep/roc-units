@@ -1,6 +1,6 @@
 [[acceleration]]
 name = "meters per second per second"
-symbol = "m/s/s"
+symbol = "m·s⁻²"
 
 [[acceleration]]
 name = "standard gravity"
@@ -123,7 +123,7 @@ name = "atmospheres"
 
 [[speed]]
 name = "meters per second"
-symbol = "m/s"
+symbol = "m·s⁻¹"
 
 [[speed]]
 name = "light speed"
@@ -139,7 +139,7 @@ symbol = "kph"
 
 [[speed]]
 name = "feet per second"
-symbol = "ft/s"
+symbol = "ft·s⁻¹"
 
 [[speed]]
 name = "knots"
@@ -169,6 +169,7 @@ symbol = "L"
 
 [[volume]]
 name = "cubic centimeters"
+symbol = "cm³"
 
 [[volume]]
 name = "cubic meters"
@@ -184,3 +185,4 @@ name = "pints"
 
 [[volume]]
 name = "cubic inches"
+symbol = "in³"
