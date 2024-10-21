@@ -46,6 +46,11 @@ scale_factor = "1000"
 sources = ["Logic"]
 to_unit = "watt hours"
 
+[[energy]]
+from_unit = "foot pound-force"
+scale_factor = "((feetToMeters 1) * (poundForceToNewtons 1))"
+to_unit = "joules"
+
 [[force]]
 from_unit = "pound-force"
 scale_factor = "poundsToKilograms (standardGravityToMetersPerSecondPerSecond 1)"

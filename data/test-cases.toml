@@ -52,6 +52,12 @@ from_value = 1
 to_unit = "joules"
 to_value = 3_600_000
 
+[[energy]]
+from_unit = "joules"
+from_value = 10_000
+to_unit = "foot pound-force"
+to_value = 7_375.621_493
+
 [[force]]
 from_unit = "newtons"
 from_value = 10000
