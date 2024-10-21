@@ -10,6 +10,12 @@ from_value = 1_076.391042
 to_unit = "square meters"
 to_value = 100
 
+[[charge]]
+from_unit = "coulombs"
+from_value = 1
+to_unit = "elementary charges"
+to_value = 6.241509074e18
+
 [[data]]
 from_unit = "bits"
 from_value = 8

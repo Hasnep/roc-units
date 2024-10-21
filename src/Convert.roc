@@ -9,6 +9,7 @@ module [
     caloriesToJoules,
     caloriesToKilocalories,
     centimetersToMeters,
+    coulombsToElementaryCharges,
     cubicCentimetersToLiters,
     cubicInchesToCubicMeters,
     cubicInchesToGallons,
@@ -18,6 +19,7 @@ module [
     daysToHours,
     daysToSeconds,
     daysToWeeks,
+    elementaryChargesToCoulombs,
     feetPerSecondToMetersPerSecond,
     feetToInches,
     feetToMeters,
@@ -28,6 +30,7 @@ module [
     gallonsToLiters,
     gallonsToQuarts,
     gramsToKilograms,
+    horsepowerToWatts,
     hoursToDays,
     hoursToMinutes,
     hoursToSeconds,
@@ -119,6 +122,7 @@ module [
     tonsToPounds,
     wattHoursToJoules,
     wattHoursToKilowattHours,
+    wattsToHorsepower,
     weeksToDays,
     weeksToSeconds,
     yardsToFeet,
@@ -172,6 +176,11 @@ centimetersToMeters = \x -> (Num.toF64 x) / 100
 expect
     out = centimetersToMeters 100.000f64
     out |> Num.isApproxEq 1.000f64 {}
+coulombsToElementaryCharges : F64 -> F64
+coulombsToElementaryCharges = \x -> (Num.toF64 x) / 1.60217e-19
+expect
+    out = coulombsToElementaryCharges 1.000f64
+    out |> Num.isApproxEq 6241509074000000000.000f64 {}
 cubicCentimetersToLiters : F64 -> F64
 cubicCentimetersToLiters = \x -> (Num.toF64 x) / 1000
 expect
@@ -207,6 +216,11 @@ daysToWeeks : F64 -> F64
 daysToWeeks = \x -> (Num.toF64 x) / 7
 expect
     out = daysToWeeks 7.000f64
+    out |> Num.isApproxEq 1.000f64 {}
+elementaryChargesToCoulombs : F64 -> F64
+elementaryChargesToCoulombs = \x -> x * 1.60217e-19
+expect
+    out = elementaryChargesToCoulombs 6241509074000000000.000f64
     out |> Num.isApproxEq 1.000f64 {}
 feetPerSecondToMetersPerSecond : F64 -> F64
 feetPerSecondToMetersPerSecond = \x -> (Num.toF64 x) / (metersToFeet 1)
@@ -252,6 +266,8 @@ gramsToKilograms = \x -> (Num.toF64 x) / 1000
 expect
     out = gramsToKilograms 1000.000f64
     out |> Num.isApproxEq 1.000f64 {}
+horsepowerToWatts : F64 -> F64
+horsepowerToWatts = \x -> x * (footPoundForceToJoules 550)
 hoursToDays : F64 -> F64
 hoursToDays = \x -> (Num.toF64 x) / 24
 expect
@@ -641,6 +657,8 @@ wattHoursToKilowattHours = \x -> (Num.toF64 x) / 1000
 expect
     out = wattHoursToKilowattHours 1000.000f64
     out |> Num.isApproxEq 1.000f64 {}
+wattsToHorsepower : F64 -> F64
+wattsToHorsepower = \x -> (Num.toF64 x) / (footPoundForceToJoules 550)
 weeksToDays : F64 -> F64
 weeksToDays = \x -> x * 7
 expect

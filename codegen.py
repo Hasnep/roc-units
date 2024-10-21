@@ -403,27 +403,43 @@ Squared a : Product a a
 # Quantities
 Acceleration a : Quantity a MetersPerSecond
 Area a : Quantity a SquareMeters
+Capacitance a : Quantity a Farads
+Charge a : Quantity a Coulombs
+Current a : Quantity a Amperes
 Data a : Quantity a Bits
 Energy a : Quantity a Joules
 Force a : Quantity a Newtons
+Inductance a : Quantity a Henrys
 Length a : Quantity a Meters
+MagneticFlux a : Quantity a Webers
 Mass a : Quantity a Kilograms
+Power a : Quantity a Watts
 Pressure a : Quantity a Pascals
+Resistance a : Quantity a Ohms
 Speed a : Quantity a MetersPerSecond
 Time a : Quantity a Seconds
+Voltage a : Quantity a Volts
 Volume a : Quantity a Liters
 
 # Canonical units
+Amperes := [Amperes]
 Bits := [Bits]
+Coulombs : Product Amperes Seconds
+Farads : Per Coulombs Volts
+Henrys : Per Volts Amperes
 Joules : Product Newtons Meters
 Kilograms := [Kilograms]
 Liters : Squared (Squared Meters)
 Meters := [Meters]
 MetersPerSecond : Per Meters Seconds
 Newtons : Per (Product Kilograms Meters) (Squared Seconds)
+Ohms : Per Volts Amperes
 Pascals : Per Newtons SquareMeters
 Seconds := [Seconds]
 SquareMeters : Squared Meters
+Volts := [Volts]
+Watts : Per Joules Seconds
+Webers : Product Volts Seconds
 
 quantity : F64, units -> Quantity F64 units
 quantity = \\num, _ -> @Quantity num

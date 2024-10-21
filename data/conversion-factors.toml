@@ -10,6 +10,14 @@ scale_factor = "(1 |> feetToMeters |> Num.pow 2)"
 sources = ["Logic"]
 to_unit = "square meters"
 
+[[charge]]
+from_unit = "elementary charges"
+scale_factor = "1.60217e-19"
+sources = [
+  "Newell, D. B., & Tiesinga, E. (2019). The international system of units (SI): https://doi.org/10.6028/nist.sp.330-2019. Table 1, page 4"
+]
+to_unit = "coulombs"
+
 [[data]]
 from_unit = "bytes"
 scale_factor = "8"
@@ -151,6 +159,12 @@ from_unit = "tons"
 scale_factor = "2000"
 sources = ["Federal Register, Vol. 33, No. 146, p. 10755, July 27, 1968"]
 to_unit = "pounds"
+
+[[power]]
+from_unit = "horsepower"
+scale_factor = "(footPoundForceToJoules 550)"
+sources = ["United States. Bureau of Standards, (1912) The relation of the horsepower to the kilowatt. Retrieved from the Digital Public Library of America, http://catalog.hathitrust.org/Record/007291276"]
+to_unit = "watts"
 
 [[pressure]]
 from_unit = "bars"

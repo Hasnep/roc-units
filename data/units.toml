@@ -11,6 +11,22 @@ name = "square meters"
 [[area]]
 name = "square feet"
 
+[[capacitance]]
+name = "farads"
+symbol = "F"
+
+[[charge]]
+name = "coulombs"
+symbol = "C"
+
+[[charge]]
+name = "elementary charges"
+symbol = "e"
+
+[[current]]
+name = "amperes"
+symbol = "A"
+
 [[data]]
 name = "bits"
 symbol = "b"
@@ -50,6 +66,10 @@ symbol = "N"
 [[force]]
 name = "pound-force"
 symbol = "lbf"
+
+[[inductance]]
+name = "henrys"
+symbol = "H"
 
 [[length]]
 name = "meters"
@@ -91,6 +111,10 @@ symbol = "in"
 name = "light years"
 symbol = "ly"
 
+[["magnetic flux"]]
+name = "webers"
+symbol = "Wb"
+
 [[mass]]
 name = "kilograms"
 symbol = "kg"
@@ -115,6 +139,14 @@ symbol = "oz"
 [[mass]]
 name = "tons"
 
+[[power]]
+name = "watts"
+symbol = "W"
+
+[[power]]
+name = "horsepower"
+symbol = "hp"
+
 [[pressure]]
 name = "pascals"
 symbol = "Pa"
@@ -124,6 +156,10 @@ name = "bars"
 
 [[pressure]]
 name = "atmospheres"
+
+[[resistance]]
+name = "ohms"
+symbol = "Ω"
 
 [[speed]]
 name = "meters per second"
@@ -166,6 +202,10 @@ name = "days"
 
 [[time]]
 name = "weeks"
+
+[[voltage]]
+name = "volts"
+symbol = "V"
 
 [[volume]]
 name = "liters"
