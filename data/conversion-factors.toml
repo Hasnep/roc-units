@@ -47,9 +47,9 @@ sources = ["Logic"]
 to_unit = "watt hours"
 
 [[force]]
-from_unit = "newtons"
-scale_factor = "(poundsToKilograms 1) / (standardGravityToMetersPerSecondPerSecond 1)"
-to_unit = "pound-force"
+from_unit = "pound-force"
+scale_factor = "poundsToKilograms (standardGravityToMetersPerSecondPerSecond 1)"
+to_unit = "newtons"
 
 [[length]]
 from_unit = "kilometers"
