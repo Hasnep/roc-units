@@ -1,3 +1,9 @@
+[[acceleration]]
+from_unit = "standard gravity"
+from_value = 10
+to_unit = "meters per second per second"
+to_value = 98.0665
+
 [[area]]
 from_unit = "square feet"
 from_value = 1_076.391042
@@ -45,6 +51,12 @@ from_unit = "kilowatt hours"
 from_value = 1
 to_unit = "joules"
 to_value = 3_600_000
+
+[[force]]
+from_unit = "newtons"
+from_value = 10000
+to_unit = "pound-force"
+to_value = 2248.089431
 
 [[length]]
 from_unit = "angstroms"
