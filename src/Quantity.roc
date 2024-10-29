@@ -14,6 +14,17 @@ module [
     toSquareMeters,
     squareFeet,
     toSquareFeet,
+    # Capacitance
+    farads,
+    toFarads,
+    # Charge
+    coulombs,
+    toCoulombs,
+    elementaryCharges,
+    toElementaryCharges,
+    # Current
+    amperes,
+    toAmperes,
     # Data
     bits,
     toBits,
@@ -37,6 +48,9 @@ module [
     toNewtons,
     poundForce,
     toPoundForce,
+    # Inductance
+    henrys,
+    toHenrys,
     # Length
     meters,
     toMeters,
@@ -58,6 +72,9 @@ module [
     toMiles,
     nauticalMiles,
     toNauticalMiles,
+    # Magnetic flux
+    webers,
+    toWebers,
     # Mass
     kilograms,
     toKilograms,
@@ -71,6 +88,11 @@ module [
     toTonnes,
     tons,
     toTons,
+    # Power
+    watts,
+    toWatts,
+    horsepower,
+    toHorsepower,
     # Pressure
     pascals,
     toPascals,
@@ -78,6 +100,9 @@ module [
     toAtmospheres,
     bars,
     toBars,
+    # Resistance
+    ohms,
+    toOhms,
     # Speed
     metersPerSecond,
     toMetersPerSecond,
@@ -104,6 +129,9 @@ module [
     toMinutes,
     weeks,
     toWeeks,
+    # Voltage
+    volts,
+    toVolts,
     # Volume
     liters,
     toLiters,
@@ -135,27 +163,43 @@ Squared a : Product a a
 # Quantities
 Acceleration a : Quantity a MetersPerSecond
 Area a : Quantity a SquareMeters
+Capacitance a : Quantity a Farads
+Charge a : Quantity a Coulombs
+Current a : Quantity a Amperes
 Data a : Quantity a Bits
 Energy a : Quantity a Joules
 Force a : Quantity a Newtons
+Inductance a : Quantity a Henrys
 Length a : Quantity a Meters
+MagneticFlux a : Quantity a Webers
 Mass a : Quantity a Kilograms
+Power a : Quantity a Watts
 Pressure a : Quantity a Pascals
+Resistance a : Quantity a Ohms
 Speed a : Quantity a MetersPerSecond
 Time a : Quantity a Seconds
+Voltage a : Quantity a Volts
 Volume a : Quantity a Liters
 
 # Canonical units
+Amperes := [Amperes]
 Bits := [Bits]
+Coulombs : Product Amperes Seconds
+Farads : Per Coulombs Volts
+Henrys : Per Volts Amperes
 Joules : Product Newtons Meters
 Kilograms := [Kilograms]
 Liters : Squared (Squared Meters)
 Meters := [Meters]
 MetersPerSecond : Per Meters Seconds
 Newtons : Per (Product Kilograms Meters) (Squared Seconds)
+Ohms : Per Volts Amperes
 Pascals : Per Newtons SquareMeters
 Seconds := [Seconds]
 SquareMeters : Squared Meters
+Volts := [Volts]
+Watts : Per Joules Seconds
+Webers : Product Volts Seconds
 
 quantity : F64, units -> Quantity F64 units
 quantity = \num, _ -> @Quantity num
@@ -214,6 +258,44 @@ squareFeet = \x -> squareMeters (Convert.squareFeetToSquareMeters x)
 ## Convert a area to a number of square feet.
 toSquareFeet : Area F64 -> F64
 toSquareFeet = \@Quantity x -> Convert.squareMetersToSquareFeet x
+
+# Capacitance
+
+## Parse a number as a capacitance in farads (F).
+farads : F64 -> Capacitance F64
+farads = \x -> @Quantity x
+
+## Convert a capacitance to a number of farads (F).
+toFarads : Capacitance F64 -> F64
+toFarads = \@Quantity x -> x
+
+# Charge
+
+## Parse a number as a charge in coulombs (C).
+coulombs : F64 -> Charge F64
+coulombs = \x -> @Quantity x
+
+## Convert a charge to a number of coulombs (C).
+toCoulombs : Charge F64 -> F64
+toCoulombs = \@Quantity x -> x
+
+## Parse a number as a charge in elementary charges (e).
+elementaryCharges : F64 -> Charge F64
+elementaryCharges = \x -> coulombs (Convert.elementaryChargesToCoulombs x)
+
+## Convert a charge to a number of elementary charges (e).
+toElementaryCharges : Charge F64 -> F64
+toElementaryCharges = \@Quantity x -> Convert.coulombsToElementaryCharges x
+
+# Current
+
+## Parse a number as a current in amperes (A).
+amperes : F64 -> Current F64
+amperes = \x -> @Quantity x
+
+## Convert a current to a number of amperes (A).
+toAmperes : Current F64 -> F64
+toAmperes = \@Quantity x -> x
 
 # Data
 
@@ -301,6 +383,16 @@ poundForce = \x -> newtons (Convert.poundForceToNewtons x)
 toPoundForce : Force F64 -> F64
 toPoundForce = \@Quantity x -> Convert.newtonsToPoundForce x
 
+# Inductance
+
+## Parse a number as a inductance in henrys (H).
+henrys : F64 -> Inductance F64
+henrys = \x -> @Quantity x
+
+## Convert a inductance to a number of henrys (H).
+toHenrys : Inductance F64 -> F64
+toHenrys = \@Quantity x -> x
+
 # Length
 
 ## Parse a number as a length in meters (m).
@@ -383,6 +475,16 @@ nauticalMiles = \x -> meters (Convert.nauticalMilesToMeters x)
 toNauticalMiles : Length F64 -> F64
 toNauticalMiles = \@Quantity x -> Convert.metersToNauticalMiles x
 
+# Magnetic flux
+
+## Parse a number as a magnetic flux in webers (Wb).
+webers : F64 -> MagneticFlux F64
+webers = \x -> @Quantity x
+
+## Convert a magnetic flux to a number of webers (Wb).
+toWebers : MagneticFlux F64 -> F64
+toWebers = \@Quantity x -> x
+
 # Mass
 
 ## Parse a number as a mass in kilograms (kg).
@@ -433,6 +535,24 @@ tons = \x -> kilograms (Convert.tonsToKilograms x)
 toTons : Mass F64 -> F64
 toTons = \@Quantity x -> Convert.kilogramsToTons x
 
+# Power
+
+## Parse a number as a power in watts (W).
+watts : F64 -> Power F64
+watts = \x -> @Quantity x
+
+## Convert a power to a number of watts (W).
+toWatts : Power F64 -> F64
+toWatts = \@Quantity x -> x
+
+## Parse a number as a power in horsepower (hp).
+horsepower : F64 -> Power F64
+horsepower = \x -> watts (Convert.horsepowerToWatts x)
+
+## Convert a power to a number of horsepower (hp).
+toHorsepower : Power F64 -> F64
+toHorsepower = \@Quantity x -> Convert.wattsToHorsepower x
+
 # Pressure
 
 ## Parse a number as a pressure in pascals (Pa).
@@ -458,6 +578,16 @@ bars = \x -> pascals (Convert.barsToPascals x)
 ## Convert a pressure to a number of bars.
 toBars : Pressure F64 -> F64
 toBars = \@Quantity x -> Convert.pascalsToBars x
+
+# Resistance
+
+## Parse a number as a resistance in ohms (Ω).
+ohms : F64 -> Resistance F64
+ohms = \x -> @Quantity x
+
+## Convert a resistance to a number of ohms (Ω).
+toOhms : Resistance F64 -> F64
+toOhms = \@Quantity x -> x
 
 # Speed
 
@@ -558,6 +688,16 @@ weeks = \x -> seconds (Convert.weeksToSeconds x)
 ## Convert a time to a number of weeks.
 toWeeks : Time F64 -> F64
 toWeeks = \@Quantity x -> Convert.secondsToWeeks x
+
+# Voltage
+
+## Parse a number as a voltage in volts (V).
+volts : F64 -> Voltage F64
+volts = \x -> @Quantity x
+
+## Convert a voltage to a number of volts (V).
+toVolts : Voltage F64 -> F64
+toVolts = \@Quantity x -> x
 
 # Volume
 
