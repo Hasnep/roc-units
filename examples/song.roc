@@ -8,13 +8,13 @@ import cli.Task
 import units.Quantity
 
 main =
-    distance = Quantity.miles 500
-    distanceKilometers = Quantity.toKilometers distance
-    Stdout.line! "I would walk $(Num.toStr distanceKilometers) kilometers."
-    Stdout.line! "And I would walk $(Num.toStr distanceKilometers) more."
-    distanceLightYears = Quantity.toLightYears distance
-    Stdout.line! "I would walk $(Num.toStr distanceLightYears) light years."
-    Stdout.line! "And I would walk $(Num.toStr distanceLightYears) more."
-    distanceAngstroms = Quantity.toAngstroms distance
-    Stdout.line! "I would walk $(Num.toStr distanceAngstroms) ångströms."
-    Stdout.line! "And I would walk $(Num.toStr distanceAngstroms) more."
+    distance = Quantity.miles(500)
+    distance_kilometers = Quantity.to_kilometers(distance)
+    Stdout.line!("I would walk ${Num.to_str(distance_kilometers)} kilometers.")
+    Stdout.line!("And I would walk ${Num.to_str(distance_kilometers)} more.")
+    distance_light_years = Quantity.to_light_years(distance)
+    Stdout.line!("I would walk ${Num.to_str(distance_light_years)} light years.")
+    Stdout.line!("And I would walk ${Num.to_str(distance_light_years)} more.")
+    distance_angstroms = Quantity.to_angstroms(distance)
+    Stdout.line!("I would walk ${Num.to_str(distance_angstroms)} ångströms.")
+    Stdout.line!("And I would walk ${Num.to_str(distance_angstroms)} more.")

@@ -3,7 +3,7 @@ from collections import OrderedDict
 from collections.abc import Generator, Iterable
 from pathlib import Path
 from textwrap import dedent
-from typing import Literal, TypeVar
+from typing import TypeVar
 
 import msgspec
 from msgspec import Struct
@@ -41,11 +41,12 @@ def split_words(s: str) -> list[str]:
     return flatten(w.split("-") for w in s.split(" "))
 
 
-def camel_case(s: str, lower_or_upper: Literal["lower", "upper"]) -> str:
-    return "".join(
-        word if (i == 0 and lower_or_upper == "lower") else word.capitalize()
-        for i, word in enumerate(split_words(s))
-    )
+def upper_camel_case(s: str) -> str:
+    return "".join(word.capitalize() for word in split_words(s))
+
+
+def snake_case(*parts: str) -> str:
+    return "_".join(word for word in flatten(split_words(s) for s in parts))
 
 
 def get_path_between_units(
@@ -89,7 +90,7 @@ def get_path_between_units(
 
 
 def get_conversion_function_name(from_unit_name: str, to_unit_name: str) -> str:
-    return f"{camel_case(from_unit_name, "lower")}To{camel_case(to_unit_name, "upper")}"
+    return snake_case(from_unit_name, "to", to_unit_name)
 
 
 def get_quantity_function(unit: Unit, canonical_unit: Unit, category: str) -> str:
@@ -100,12 +101,12 @@ def get_quantity_function(unit: Unit, canonical_unit: Unit, category: str) -> st
             dedent(
                 f"""
                 ## Parse a number as a {category} in {unit_full_name}.
-                {camel_case(unit.name,"lower")} : F64 -> {camel_case(category,"upper")} F64
-                {camel_case(unit.name,"lower")} = \\x -> @Quantity x
+                {snake_case(unit.name)} : F64 -> {upper_camel_case(category,)} F64
+                {snake_case(unit.name)} = |x| @Quantity(x)
 
                 ## Convert a {category} to a number of {unit_full_name}.
-                to{camel_case(unit.name,"upper")} : {camel_case(category,"upper")} F64 -> F64
-                to{camel_case(unit.name,"upper")} = \\@Quantity x -> x
+                {snake_case("to", unit.name)} : {upper_camel_case(category)} F64 -> F64
+                {snake_case("to", unit.name)} = |@Quantity(x)| x
                 """
             ).strip()
             + "\n"
@@ -115,12 +116,12 @@ def get_quantity_function(unit: Unit, canonical_unit: Unit, category: str) -> st
             dedent(
                 f"""
                 ## Parse a number as a {category} in {unit_full_name}.
-                {camel_case(unit.name,"lower")} : F64 -> {camel_case(category,"upper")} F64
-                {camel_case(unit.name,"lower")} = \\x -> {camel_case(canonical_unit.name,"lower")} (Convert.{get_conversion_function_name(unit.name,canonical_unit.name)} x)
+                {snake_case(unit.name)} : F64 -> {upper_camel_case(category)} F64
+                {snake_case(unit.name)} = |x| {snake_case(canonical_unit.name)}(Convert.{get_conversion_function_name(unit.name,canonical_unit.name)}(x))
 
                 ## Convert a {category} to a number of {unit_full_name}.
-                to{camel_case(unit.name,"upper")} : {camel_case(category,"upper")} F64 -> F64
-                to{camel_case(unit.name,"upper")} = \\@Quantity x -> Convert.{get_conversion_function_name(canonical_unit.name,unit.name)} x
+                {snake_case("to",unit.name)} : {upper_camel_case(category)} F64 -> F64
+                {snake_case("to",unit.name)} = |@Quantity(x)| Convert.{get_conversion_function_name(canonical_unit.name,unit.name)}(x)
                 """
             ).strip()
             + "\n"
@@ -145,7 +146,7 @@ def get_convert_function(
         )
         dividing = next(
             (
-                f"(Num.toF64 x) / {c.scale_factor}"
+                f"Num.to_f64(x) / {c.scale_factor}"
                 for c in conversion_factors_in_category
                 if c.from_unit == to_unit and c.to_unit == from_unit
             ),
@@ -181,13 +182,13 @@ def get_convert_function(
     return dedent(
         f"""
         {conversion_function_name} : F64 -> F64
-        {conversion_function_name} = \\x -> {how_to_convert}
+        {conversion_function_name} = |x| {how_to_convert}
         """
     ).strip() + (
         "\n"
         + "\n".join(
             [
-                f"expect\n    out = {conversion_function_name} {test_case.from_value:.3f}f64\n    out |> Num.isApproxEq {test_case.to_value:.3f}f64 {{}}"
+                f"expect\n    out = {conversion_function_name}({test_case.from_value:.3f}f64)\n    out |> Num.is_approx_eq({test_case.to_value:.3f}f64, {{}})"
                 for test_case in test_cases
             ]
         )
@@ -349,7 +350,7 @@ def main() -> None:
                         # "isGt",
                         # "isLte",
                         # "isGte",
-                        # "isApproxEq",
+                        # "is_approx_eq",
                         # "isZero",
                         # "isPositive",
                         # "isNegative",
@@ -379,10 +380,7 @@ def main() -> None:
                         f"    {x},"
                         for x in flatten(
                             [
-                                [
-                                    camel_case(unit.name, "lower"),
-                                    f"to{camel_case(unit.name,'upper')}",
-                                ]
+                                [snake_case(unit.name), snake_case("to", unit.name)]
                                 for unit in category_units
                             ]
                         )
@@ -442,27 +440,27 @@ Watts : Per Joules Seconds
 Webers : Product Volts Seconds
 
 quantity : F64, units -> Quantity F64 units
-quantity = \\num, _ -> @Quantity num
+quantity = |num, _| @Quantity(num)
 
 add : Quantity F64 units, Quantity F64 units -> Quantity F64 units
-add = \\@Quantity x, @Quantity y -> @Quantity (x + y)
+add = |@Quantity(x), @Quantity(y)| @Quantity(x + y)
 
 sub : Quantity F64 units, Quantity F64 units -> Quantity F64 units
-sub = \\@Quantity x, @Quantity y -> @Quantity (x - y)
+sub = |@Quantity(x), @Quantity(y)| @Quantity(x - y)
 
-mul : Quantity F64 unitsA, Quantity F64 unitsB -> Quantity F64 (Product unitsA unitsB)
-mul = \\@Quantity x, @Quantity y -> @Quantity (x * y)
+mul : Quantity F64 units_a, Quantity F64 units_b -> Quantity F64 (Product units_a units_b)
+mul = |@Quantity(x), @Quantity(y)| @Quantity(x * y)
 
 square : Quantity F64 units -> Quantity F64 (Squared units)
-square = \\@Quantity x -> @Quantity (x * x)
+square = |@Quantity(x)| @Quantity(x * x)
 
 expect
-    a = meters 10
-    out = square a
-    out |> isApproxEq (squareMeters 100) {}
+    a = meters(10)
+    out = square(a)
+    out |> is_approx_eq(square_meters(100), {})
 
-isApproxEq : Quantity F64 units, Quantity F64 units, {} -> Bool
-isApproxEq = \\@Quantity x, @Quantity y, _ -> Num.isApproxEq x y {}
+is_approx_eq : Quantity F64 units, Quantity F64 units, {} -> Bool
+is_approx_eq = |@Quantity(x), @Quantity(y), _| Num.is_approx_eq(x, y, {})
 """
             )
             + "\n".join(generated_quantity_functions)
