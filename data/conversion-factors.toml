@@ -6,7 +6,7 @@ to_unit = "meters per second per second"
 
 [[area]]
 from_unit = "square feet"
-scale_factor = "(1 |> feetToMeters |> Num.pow 2)"
+scale_factor = "Num.pow(feet_to_meters(1), 2)"
 sources = ["Logic"]
 to_unit = "square meters"
 
@@ -44,7 +44,7 @@ to_unit = "calories"
 
 [[energy]]
 from_unit = "watt hours"
-scale_factor = "hoursToSeconds 1"
+scale_factor = "hours_to_seconds(1)"
 sources = ["Logic"]
 to_unit = "joules"
 
@@ -56,12 +56,12 @@ to_unit = "watt hours"
 
 [[energy]]
 from_unit = "foot pound-force"
-scale_factor = "((feetToMeters 1) * (poundForceToNewtons 1))"
+scale_factor = "(feet_to_meters(1) * pound_force_to_newtons(1))"
 to_unit = "joules"
 
 [[force]]
 from_unit = "pound-force"
-scale_factor = "poundsToKilograms (standardGravityToMetersPerSecondPerSecond 1)"
+scale_factor = "pounds_to_kilograms(standard_gravity_to_meters_per_second_per_second(1))"
 to_unit = "newtons"
 
 [[length]]
@@ -99,7 +99,7 @@ to_unit = "centimeters"
 
 [[length]]
 from_unit = "light years"
-scale_factor = "((lightSpeedToMetersPerSecond 1) * (daysToSeconds (365 + (1 / 4))))"
+scale_factor = "(light_speed_to_meters_per_second(1) * days_to_seconds(365 + (1 / 4)))"
 sources = ["Logic"]
 to_unit = "meters"
 
@@ -162,7 +162,7 @@ to_unit = "pounds"
 
 [[power]]
 from_unit = "horsepower"
-scale_factor = "(footPoundForceToJoules 550)"
+scale_factor = "foot_pound_force_to_joules(550)"
 sources = ["United States. Bureau of Standards, (1912) The relation of the horsepower to the kilowatt. Retrieved from the Digital Public Library of America, http://catalog.hathitrust.org/Record/007291276"]
 to_unit = "watts"
 
@@ -184,7 +184,7 @@ to_unit = "pascals"
 
 [[speed]]
 from_unit = "knots"
-scale_factor = "((nauticalMilesToMeters 1) / (1 |> hoursToMinutes |> minutesToSeconds))"
+scale_factor = "(nautical_miles_to_meters(1) / (1 |> hours_to_minutes |> minutes_to_seconds))"
 sources = [
   "Thompson, E. A., & Taylor, B. N. (2008). Guide for the use of the International System of Units (SI). https://doi.org/10.6028/nist.sp.811e2008. Table 9, page 10"
 ]
@@ -192,7 +192,7 @@ to_unit = "meters per second"
 
 [[speed]]
 from_unit = "meters per second"
-scale_factor = "(metersToFeet 1)"
+scale_factor = "meters_to_feet(1)"
 sources = ["Logic"]
 to_unit = "feet per second"
 
@@ -213,13 +213,13 @@ to_unit = "meters per second"
 
 [[speed]]
 from_unit = "miles per hour"
-scale_factor = "(milesToMeters 1 / (1 |> hoursToMinutes |> minutesToSeconds))"
+scale_factor = "(miles_to_meters(1) / (1 |> hours_to_minutes |> minutes_to_seconds))"
 sources = ["Logic"]
 to_unit = "meters per second"
 
 [[speed]]
 from_unit = "kilometers per hour"
-scale_factor = "(kilometersToMeters 1 / (1 |> hoursToMinutes |> minutesToSeconds))"
+scale_factor = "(kilometers_to_meters(1) / (1 |> hours_to_minutes() |> minutes_to_seconds()))"
 sources = ["Logic"]
 to_unit = "meters per second"
 
@@ -272,7 +272,7 @@ to_unit = "milliliters"
 
 [[volume]]
 from_unit = "cubic inches"
-scale_factor = "(1 |> inchesToMeters |> Num.pow 3)"
+scale_factor = "Num.pow(inches_to_meters(1), 3)"
 to_unit = "cubic meters"
 
 [[volume]]

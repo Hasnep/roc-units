@@ -8,5 +8,5 @@ import cli.Task
 import units.Quantity
 
 main =
-    height = Quantity.feet 5 |> Quantity.add (Quantity.inches 11)
-    Stdout.line! "Taylor Swift is $(height |> Quantity.toCentimeters |> Num.toStr) centimeters tall."
+    height = Quantity.feet(5) |> Quantity.add(Quantity.inches(11))
+    Stdout.line!("Taylor Swift is ${height |> Quantity.to_centimeters |> Num.to_str} centimeters tall.")
